@@ -52,7 +52,7 @@
 
 <main id="main">
   <!-- The aperture -->
-  <section class="stage" id="stage" aria-label="Introduction" data-field="#A05A33" data-left="" data-ink="244,239,231" data-sel="42,36,33" data-ring="244,239,231" data-hero-light="0" data-reveal-light="1">
+  <section class="stage" id="stage" aria-label="Introduction" data-field="#A05A33" data-left="" data-ink="244,239,231" data-sel="42,36,33" data-ring="244,239,231" data-hero-light="0" data-lens="photo" data-reveal-light="1">
     <div class="frame">
       <div class="reveal field-ivory">
         <div class="entry" id="entry">
@@ -290,168 +290,67 @@
   }
 
 
-  /* ---------- Photographic lens ---------- */
-  const LIGHT = -2.35;                         // light falls from the top left
-  const metal = (k, a = 1) => {                // k 0 dark to 1 bright, warm graphite
-    const v = (x, y) => Math.round(x + (y - x) * k);
-    return `rgba(${v(16, 128)},${v(14, 120)},${v(13, 112)},${a})`;
-  };
-  function conic(c, cx, cy, lo, hi, a = 1) {
-    if (!c.createConicGradient) {
-      const g = c.createLinearGradient(cx - 300, cy - 300, cx + 300, cy + 300);
-      g.addColorStop(0, metal(hi, a)); g.addColorStop(1, metal(lo, a)); return g;
+  /* ---------- Lens ---------- */
+  // Photographic mode hands drawing to the 3D renderer; abstract mode, and any device without WebGL, draws here.
+  function drawLens(c, o) {
+    if (SD.lens === 'photo') {
+      if (window.lens3dState === 'ok') { window.lens3d.draw(o); return; }
+      if (window.lens3dState !== 'fail' && performance.now() < 3000) return;
     }
-    const g = c.createConicGradient(LIGHT, cx, cy);
-    const stops = [[0, 1], [.12, .55], [.3, .1], [.5, .0], [.62, .25], [.75, .05], [.9, .45], [1, 1]];
-    stops.forEach(([p, k]) => g.addColorStop(p, metal(lo + (hi - lo) * k, a)));
-    return g;
+    drawLensAbstract(c, o);
   }
-  function ring(c, cx, cy, r1, r2, fill) {
-    c.beginPath(); c.arc(cx, cy, r2, 0, TAU); c.arc(cx, cy, r1, 0, TAU, true); c.fillStyle = fill; c.fill('evenodd');
-  }
-  function openingPath(c, cx, cy, r, rot, n) {
+
+  // Flat blades in a tonal sweep from espresso to deep bronze, inside a fine engraved dial.
+  const SWEEP = ['#1F1A18', '#272120', '#30261F', '#3A2A20', '#452E21', '#503222', '#5B3622', '#663A23', '#723F25'];
+  function drawLensAbstract(c, o) {
+    const { cx, cy, house: H, r, rot, open } = o;
+    const n = SWEEP.length, far = H * 3;
+    const dialA = clamp(1 - open * 3);
+    if (dialA > 0) {
+      c.save(); c.globalAlpha = dialA;
+      c.strokeStyle = 'rgba(244,239,231,.85)'; c.lineWidth = 1;
+      c.beginPath(); c.arc(cx, cy, H * 1.035, 0, TAU); c.stroke();
+      const pos = open * (STOPS.length - 1), step = .26, ticks = 144, turn = pos * step;
+      for (let k = 0; k < ticks; k++) {
+        const a = -Math.PI / 2 + k * TAU / ticks - turn, major = k % 8 === 0;
+        const r1 = H * 1.075, r2 = H * (major ? 1.115 : 1.095);
+        c.strokeStyle = `rgba(244,239,231,${major ? .75 : .38})`;
+        c.beginPath(); c.moveTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); c.lineTo(cx + Math.cos(a) * r2, cy + Math.sin(a) * r2); c.stroke();
+      }
+      const fs = clamp(H * .045, 10, 15);
+      c.font = `400 ${fs}px "DM Sans", sans-serif`; c.textAlign = 'center'; c.textBaseline = 'middle';
+      STOPS.forEach((st, i) => {
+        const a = -Math.PI / 2 + (i - pos) * step, rr = H * 1.19;
+        c.save(); c.translate(cx + rr * Math.cos(a), cy + rr * Math.sin(a)); c.rotate(a + Math.PI / 2);
+        c.fillStyle = Math.abs(i - pos) < .5 ? '#2A2421' : 'rgba(244,239,231,.85)';
+        c.fillText(st, 0, 0); c.restore();
+      });
+      c.beginPath();
+      c.moveTo(cx, cy - H * 1.245); c.lineTo(cx - H * .02, cy - H * 1.28); c.lineTo(cx + H * .02, cy - H * 1.28); c.closePath();
+      c.fillStyle = '#2A2421'; c.fill();
+      c.restore();
+    }
     const v = [];
     for (let i = 0; i < n; i++) { const a = rot + i * TAU / n; v.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
-    c.moveTo(v[0][0], v[0][1]);
-    for (let i = 0; i < n; i++) {
-      const p = v[i], q = v[(i + 1) % n];
-      const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2;
-      let dx = mx - cx, dy = my - cy; const dl = Math.hypot(dx, dy) || 1; dx /= dl; dy /= dl;
-      const bulge = Math.hypot(q[0] - p[0], q[1] - p[1]) * .2;
-      c.quadraticCurveTo(mx + dx * bulge, my + dy * bulge, q[0], q[1]);
-    }
-    c.closePath();
-    return v;
-  }
-
-  function drawLens(c, o) {
-    const { cx, cy, house: H, r, rot, open } = o;
-    const n = 9, far = H * 3;
-    const barrelA = clamp(1 - open * 3);
-    const glassA = clamp(1 - open * 2);
-
-    // shadow cast by the lens onto the field
-    if (barrelA > 0) {
-      c.save();
-      const sx = cx + H * .07, sy = cy + H * .12, sr = H * 1.5;
-      const g = c.createRadialGradient(sx, sy, H * 1.1, sx, sy, sr);
-      g.addColorStop(0, `rgba(20,10,4,${.45 * barrelA})`); g.addColorStop(1, 'rgba(20,10,4,0)');
-      c.beginPath(); c.arc(sx, sy, sr, 0, TAU); c.arc(cx, cy, H, 0, TAU, true); c.fillStyle = g; c.fill('evenodd');
-      c.restore();
-    }
-
-    // barrel, grip and aperture ring
-    if (barrelA > 0) {
-      c.save(); c.globalAlpha = barrelA;
-      ring(c, cx, cy, H * 1.29, H * 1.33, conic(c, cx, cy, .12, .72));                   // front lip
-      ring(c, cx, cy, H * 1.165, H * 1.29, conic(c, cx, cy, .04, .32));                  // grip base
-      c.lineWidth = Math.max(1, H * .006);                                               // knurling
-      const ridges = 220;
-      for (let k = 0; k < ridges; k++) {
-        const a = k * TAU / ridges, ca = Math.cos(a), sa = Math.sin(a);
-        const lit = .5 + .5 * Math.cos(a - LIGHT);
-        c.strokeStyle = k % 2 ? `rgba(255,248,240,${.04 + .16 * lit * lit})` : 'rgba(0,0,0,.55)';
-        c.beginPath(); c.moveTo(cx + ca * H * 1.175, cy + sa * H * 1.175); c.lineTo(cx + ca * H * 1.28, cy + sa * H * 1.28); c.stroke();
-      }
-      ring(c, cx, cy, H * 1.155, H * 1.17, metal(.02));                                  // groove
-      ring(c, cx, cy, H * 1.045, H * 1.155, conic(c, cx, cy, .02, .2));                  // aperture ring, matte
-      // engraved f-numbers, the ring turns as the lens opens
-      const pos = open * (STOPS.length - 1), step = .26;
-      const fs = clamp(H * .042, 9, 15);
-      c.font = `500 ${fs}px "DM Sans", sans-serif`; c.textAlign = 'center'; c.textBaseline = 'middle';
-      STOPS.forEach((st, i) => {
-        const a = -Math.PI / 2 + (i - pos) * step, rr = H * 1.1;
-        const near = Math.abs(i - pos) < .5;
-        c.save(); c.translate(cx + rr * Math.cos(a), cy + rr * Math.sin(a)); c.rotate(a + Math.PI / 2);
-        c.fillStyle = near ? '#E0A877' : 'rgba(236,229,218,.82)';
-        c.fillText(st, 0, 0); c.restore();
-        const ta = a + step / 2;                                                           // tick between stops
-        c.beginPath(); c.arc(cx + rr * Math.cos(ta), cy + rr * Math.sin(ta), Math.max(1, H * .0045), 0, TAU);
-        c.fillStyle = 'rgba(236,229,218,.45)'; c.fill();
-      });
-      // index mark on the fixed barrel
-      c.beginPath();
-      c.moveTo(cx, cy - H * 1.158); c.lineTo(cx - H * .018, cy - H * 1.188); c.lineTo(cx + H * .018, cy - H * 1.188); c.closePath();
-      c.fillStyle = '#E0A877'; c.fill();
-      ring(c, cx, cy, H * 1.0, H * 1.045, conic(c, cx, cy, .2, 1));                       // polished bevel
-      c.restore();
-    }
-
-    // blades, clipped to the housing with the curved opening cut out
+    const e = v.map((p, i) => { const q = v[(i + 1) % n]; const dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1; return [dx / l, dy / l]; });
     c.save();
     c.beginPath(); c.arc(cx, cy, H, 0, TAU);
-    const v = openingPath(c, cx, cy, r, rot, n);
+    v.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.closePath();
     c.clip('evenodd');
-    c.fillStyle = metal(.02); c.fillRect(cx - H, cy - H, H * 2, H * 2);
-    const e = v.map((p, i) => { const q = v[(i + 1) % n]; const dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1; return [dx / l, dy / l]; });
     for (let i = 0; i < n; i++) {
       const p = v[i], q = v[(i + 1) % n], ep = e[(i - 1 + n) % n], ei = e[i];
-      const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2;
-      const th = Math.atan2(my - cy, mx - cx);
-      const lit = Math.pow(.5 + .5 * Math.cos(th - LIGHT), 2.2);
-      let nx = mx - cx, ny = my - cy; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
-      const g = c.createLinearGradient(mx, my, mx + nx * H * .9, my + ny * H * .9);
-      g.addColorStop(0, metal(.16 + .5 * lit)); g.addColorStop(.35, metal(.08 + .24 * lit)); g.addColorStop(1, metal(.03));
       c.beginPath();
       c.moveTo(p[0] + ep[0] * far, p[1] + ep[1] * far); c.lineTo(p[0], p[1]); c.lineTo(q[0], q[1]); c.lineTo(q[0] + ei[0] * far, q[1] + ei[1] * far);
-      c.closePath(); c.fillStyle = g; c.fill();
+      c.closePath(); c.fillStyle = SWEEP[i]; c.fill();
     }
-    // overlap shadows and catch lights along every seam
+    c.strokeStyle = 'rgba(244,239,231,.16)'; c.lineWidth = 1;
     for (let i = 0; i < n; i++) {
-      const q = v[(i + 1) % n], ei = e[i], en = e[(i + 1) % n];
-      let px = -ei[1], py = ei[0]; if (px * en[0] + py * en[1] < 0) { px = -px; py = -py; }
-      const wS = H * .07;
-      const g = c.createLinearGradient(q[0], q[1], q[0] + px * wS, q[1] + py * wS);
-      g.addColorStop(0, 'rgba(0,0,0,.62)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-      c.beginPath(); c.moveTo(q[0], q[1]); c.lineTo(q[0] + ei[0] * far, q[1] + ei[1] * far);
-      c.lineTo(q[0] + ei[0] * far + px * wS, q[1] + ei[1] * far + py * wS); c.lineTo(q[0] + px * wS, q[1] + py * wS); c.closePath();
-      c.fillStyle = g; c.fill();
-      const th = Math.atan2(ei[1], ei[0]);
-      c.strokeStyle = `rgba(255,244,232,${.06 + .14 * Math.pow(.5 + .5 * Math.cos(th - LIGHT - Math.PI / 2), 3)})`;
-      c.lineWidth = 1; c.beginPath(); c.moveTo(q[0], q[1]); c.lineTo(q[0] + ei[0] * far, q[1] + ei[1] * far); c.stroke();
+      const q = v[(i + 1) % n], ei = e[i];
+      c.beginPath(); c.moveTo(q[0], q[1]); c.lineTo(q[0] + ei[0] * far, q[1] + ei[1] * far); c.stroke();
     }
-    // depth at the rim of the housing
-    const vg = c.createRadialGradient(cx, cy, H * .72, cx, cy, H);
-    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.55)');
-    c.fillStyle = vg; c.fillRect(cx - H, cy - H, H * 2, H * 2);
     c.restore();
-
-    // polished blade edges around the opening, with a soft shadow falling inward
-    c.save();
-    c.beginPath(); openingPath(c, cx, cy, r, rot, n); c.clip();
-    c.beginPath(); openingPath(c, cx, cy, r, rot, n);
-    c.shadowColor = `rgba(20,12,8,${.45 * glassA})`; c.shadowBlur = Math.max(6, H * .05);
-    c.strokeStyle = `rgba(20,12,8,${.45 * glassA})`; c.lineWidth = 2; c.stroke();
-    c.restore();
-    c.save();
-    c.beginPath(); openingPath(c, cx, cy, r, rot, n);
-    c.strokeStyle = 'rgba(214,190,166,.42)'; c.lineWidth = 1.1; c.stroke();
-    c.restore();
-
-    // front glass, reflections and coating
-    if (glassA > 0) {
-      c.save();
-      c.beginPath(); c.arc(cx, cy, H, 0, TAU); c.clip();
-      c.globalAlpha = glassA;
-      const hx = cx - H * .42, hy = cy - H * .48;
-      const hl = c.createRadialGradient(hx, hy, 0, hx, hy, H * .95);
-      hl.addColorStop(0, 'rgba(255,255,255,.13)'); hl.addColorStop(.45, 'rgba(255,255,255,.04)'); hl.addColorStop(1, 'rgba(255,255,255,0)');
-      c.fillStyle = hl; c.fillRect(cx - H, cy - H, H * 2, H * 2);
-      // a soft coating tint and a small blurred specular, the way front glass catches a window
-      const tx = cx - H * .2, ty = cy - H * .55;
-      const tint = c.createRadialGradient(tx, ty, 0, tx, ty, H * .55);
-      tint.addColorStop(0, 'rgba(160,120,230,.10)'); tint.addColorStop(.6, 'rgba(120,190,160,.05)'); tint.addColorStop(1, 'rgba(120,190,160,0)');
-      c.fillStyle = tint; c.fillRect(cx - H, cy - H, H * 2, H * 2);
-      const bx = cx + H * .42, by = cy + H * .5;
-      const bounce = c.createRadialGradient(bx, by, 0, bx, by, H * .45);
-      bounce.addColorStop(0, 'rgba(255,236,214,.07)'); bounce.addColorStop(1, 'rgba(255,236,214,0)');
-      c.fillStyle = bounce; c.fillRect(cx - H, cy - H, H * 2, H * 2);
-      const sx2 = cx - H * .3, sy2 = cy - H * .36;
-      const spec = c.createRadialGradient(sx2, sy2, 0, sx2, sy2, H * .07);
-      spec.addColorStop(0, 'rgba(255,255,255,.28)'); spec.addColorStop(1, 'rgba(255,255,255,0)');
-      c.fillStyle = spec; c.fillRect(sx2 - H * .07, sy2 - H * .07, H * .14, H * .14);
-      c.restore();
-    }
+    c.beginPath(); v.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.closePath();
+    c.strokeStyle = 'rgba(244,239,231,.55)'; c.lineWidth = 1; c.stroke();
   }
 
   function fit(cv) {
@@ -501,12 +400,12 @@
     const cx = lerp(baseX, w / 2, open) + drift.x * 28 * still;
     const cy = lerp(baseY, h / 2, open) + drift.y * 22 * still;
     const m = Math.min(w, h);
-    const houseClosed = wide ? m * .29 : m * .3;
+    const houseClosed = wide ? m * .28 : m * .3;
     const house = lerp(houseClosed, Math.hypot(w, h), Math.pow(open, 2.2));
     const rMin = Math.max(16, m * .04);
-    const breathe = reduce ? 1 : 1 + .14 * Math.sin(t / 900) * still;
+    const breathe = reduce || SD.lens === 'photo' ? 1 : 1 + .14 * Math.sin(t / 900) * still;
     const r = Math.min(house * .98, lerp(rMin * breathe, Math.hypot(w, h) * .64, Math.pow(open, 1.1)));
-    const rot = -Math.PI / 2 + open * 1.25 + (reduce ? 0 : .05 * Math.sin(t / 2600) * still);
+    const rot = -Math.PI / 2 + open * 1.25 + (reduce || SD.lens === 'photo' ? 0 : .05 * Math.sin(t / 2600) * still);
 
     c.clearRect(0, 0, w, h);
     // brand field outside the lens, transparent inside the housing
@@ -518,7 +417,7 @@
       c.fillStyle = SD.left; c.fillRect(0, 0, w * .46, h);
     }
     c.restore();
-    drawLens(c, { cx, cy, house, r, rot, open, t, wide });
+    drawLens(c, { cx, cy, house, r, rot, open, t, wide, w, h });
 
     // the dictionary entry stays centred in the opening
     entry.style.transform = `translate(${cx - w / 2}px, ${cy - h / 2}px)`;
@@ -587,5 +486,8 @@
 })();
 </script>
 <script src="site.js"></script>
+<script type="module">
+  if (document.getElementById('stage').dataset.lens === 'photo') import('./lens3d.js').catch(() => { window.lens3dState = 'fail'; });
+</script>
 </body>
 </html>
