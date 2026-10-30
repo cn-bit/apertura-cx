@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Start a conversation | Apertura CX</title>
+<meta name="description" content="Start a conversation with Apertura CX about the customer experience, strategy or advisory needs of your business.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apertura CX">
+<meta property="og:title" content="Start a conversation | Apertura CX">
+<meta property="og:description" content="Start a conversation with Apertura CX about the customer experience, strategy or advisory needs of your business.">
+<meta property="og:locale" content="en_AU">
+<meta name="theme-color" content="#2A2421">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232A2421'/%3E%3Cpolygon points='16,9 22,12.5 22,19.5 16,23 10,19.5 10,12.5' fill='%23F4EFE7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Inter+Tight:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head" id="head">
+  <a class="brand" href="index.html" aria-label="Apertura CX home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1"/><polygon points="16,9.5 21.6,12.75 21.6,19.25 16,22.5 10.4,19.25 10.4,12.75" fill="none" stroke-width="1.2"/></svg>
+    <span class="word">APERTURA <span class="cx">CX</span></span>
+  </a>
+  <div class="head-right">
+    <nav class="nav" aria-label="Main">
+      <a class="text-link" href="approach.html">Approach</a>
+      <a class="text-link" href="about.html">About</a>
+      <a class="begin" href="begin.html">Request a Snapshot</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-word">Menu</span><span class="bars" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu-inner">
+    <nav class="menu-links" aria-label="Menu">
+      <a href="index.html">Home</a>
+      <a href="approach.html">Approach</a>
+      <a href="about.html">About</a>
+      <a href="begin.html">Request a Snapshot</a>
+    </nav>
+    <div class="menu-foot">
+      <p>Customer experience and retail growth for founder-led brands in retail, hospitality and property. Melbourne.</p>
+      <a href="https://www.linkedin.com/in/carl-nave/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="page-intro field-espresso">
+    <div class="wrap">
+      <h1>Let's understand what matters to your business.</h1>
+      <div class="lede">
+        <p class="lead-big">Whether you're refining an established experience or preparing for what comes next, we'd welcome a conversation about your priorities and ambitions.</p>
+        <p>Looking for a focused first assessment? <a href="begin.html">Request a Snapshot</a> instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block field-ivory">
+    <div class="wrap form-layout narrow">
+      <div class="form-card">
+        <h2 class="h-form">Start a conversation</h2>
+        <form id="contactForm" class="ax-form" novalidate data-kind="enquiry" data-success="Thank you. Your enquiry has been received. We will be in touch to arrange a conversation.">
+          <input type="hidden" name="subject" value="New enquiry from the Apertura CX website">
+          <input type="hidden" name="form" value="General enquiry">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field"><label for="c-name">Your name <span class="req">(required)</span></label><input id="c-name" name="name" type="text" autocomplete="name" placeholder="Full name" required><p class="err" id="e-c-name"></p></div>
+          <div class="field"><label for="c-biz">Business name</label><input id="c-biz" name="business" type="text" autocomplete="organization" placeholder="Name of business"></div>
+          <div class="field"><label for="c-email">Email address <span class="req">(required)</span></label><input id="c-email" name="email" type="email" autocomplete="email" placeholder="name@business.com.au" required><p class="err" id="e-c-email"></p></div>
+          <div class="field"><label for="c-msg">How can we help? <span class="req">(required)</span></label><textarea id="c-msg" name="message" rows="6" maxlength="1500" placeholder="A little about your business and what you would like to discuss." required data-counter="c-count"></textarea><p class="count" id="c-count" aria-live="polite">0 of 1500 characters</p><p class="err" id="e-c-msg"></p></div>
+          <div class="field"><label class="check"><input id="c-consent" name="consent" type="checkbox" value="Agreed" required> <span>I agree to be contacted about this enquiry and acknowledge the <a href="privacy.html">privacy notice</a>.</span></label><p class="err" id="e-c-consent"></p></div>
+          <button class="cta submit" type="submit">Send your enquiry</button>
+          <div class="status" role="status" aria-live="polite" tabindex="-1"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="field-espresso">
+  <div class="wrap"><div class="bar">
+    <div>Apertura CX, Melbourne. © 2026</div>
+    <nav aria-label="Footer">
+      <a href="approach.html">Approach</a>
+      <a href="about.html">About</a>
+      <a href="begin.html">Request a Snapshot</a>
+      <a href="https://www.linkedin.com/in/carl-nave/" rel="noopener">LinkedIn</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div></div>
+</footer>
+
+<script>
+(() => {
+  const head = document.getElementById('head');
+  const set = () => head.classList.toggle('solid', scrollY > 40);
+  addEventListener('scroll', set, { passive: true }); set();
+})();
+</script>
+<script src="site.js"></script>
+<script>
+/* Snapshot and enquiry forms.
+   Submissions are sent to Web3Forms, which emails them to the inbox linked to the access key.
+   Paste the access key below once it has been created. Until then the forms explain that they are not connected. */
+(() => {
+  const ACCESS_KEY = '';
+  const ENDPOINT = 'https://api.web3forms.com/submit';
+  const MESSAGES = {
+    name: 'Enter your name.',
+    business: 'Enter your business name.',
+    email: 'Enter your email address.',
+    emailFormat: 'Enter an email address in the format name@business.com.au.',
+    website: 'Enter your website, or tick No website.',
+    websiteFormat: 'Enter a full web address, such as https://yourbusiness.com.au.',
+    industry: 'Choose an industry.',
+    message: 'Tell us a little about what you would like to discuss.',
+    consent: 'Tick the box to agree to be contacted.'
+  };
+
+  document.querySelectorAll('form.ax-form').forEach(form => {
+    const status = form.querySelector('.status');
+    const btn = form.querySelector('button[type="submit"]');
+    const label = btn.textContent;
+    const web = form.querySelector('[data-needs-unless]');
+    const noweb = web ? document.getElementById(web.dataset.needsUnless) : null;
+    let sending = false;
+
+    form.querySelectorAll('.field').forEach(f => {
+      const input = f.querySelector('input:not([type="hidden"]), select, textarea');
+      const err = f.querySelector('.err');
+      if (input && err) input.setAttribute('aria-describedby', err.id);
+    });
+    form.querySelectorAll('[data-counter]').forEach(t => {
+      const out = document.getElementById(t.dataset.counter);
+      const update = () => { out.textContent = `${t.value.length} of ${t.maxLength} characters`; };
+      t.addEventListener('input', update); update();
+    });
+    if (web && noweb) {
+      noweb.addEventListener('change', () => {
+        web.disabled = noweb.checked;
+        if (noweb.checked) { web.value = ''; setError(web, ''); }
+      });
+    }
+
+    function setError(input, msg) {
+      const err = input.closest('.field').querySelector('.err');
+      if (!err) return;
+      err.textContent = msg;
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      input.closest('.field').classList.toggle('has-error', !!msg);
+    }
+    form.addEventListener('input', e => { if (e.target.matches('input, select, textarea')) setError(e.target, ''); });
+    form.addEventListener('change', e => { if (e.target.matches('input, select, textarea')) setError(e.target, ''); });
+
+    function normaliseUrl(v) {
+      v = v.trim();
+      if (!v) return '';
+      if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+      try { const u = new URL(v); return u.hostname.includes('.') ? u.href : null; } catch { return null; }
+    }
+
+    function validate() {
+      let first = null;
+      const fail = (input, msg) => { setError(input, msg); if (!first) first = input; };
+      form.querySelectorAll('[required]').forEach(input => {
+        if (input.type === 'checkbox') { if (!input.checked) fail(input, MESSAGES.consent); return; }
+        if (!input.value.trim()) fail(input, MESSAGES[input.name] || 'Complete this field.');
+        else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) fail(input, MESSAGES.emailFormat);
+      });
+      if (web && !(noweb && noweb.checked)) {
+        if (!web.value.trim()) fail(web, MESSAGES.website);
+        else if (normaliseUrl(web.value) === null) fail(web, MESSAGES.websiteFormat);
+      }
+      return first;
+    }
+
+    function showStatus(kind, text) {
+      status.className = 'status ' + kind;
+      status.textContent = text;
+      status.focus({ preventScroll: false });
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (sending) return;
+      status.className = 'status'; status.textContent = '';
+      const first = validate();
+      if (first) { first.focus(); return; }
+      if (!ACCESS_KEY) {
+        showStatus('error', 'This form is not connected yet, so nothing has been sent. Your details are still here.');
+        return;
+      }
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (web && data.website) data.website = normaliseUrl(data.website);
+      data.access_key = ACCESS_KEY;
+      data.from_name = 'Apertura CX website';
+      if (data.email) data.replyto = data.email;
+      sending = true; btn.disabled = true; btn.textContent = 'Sending';
+      try {
+        const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.success) {
+          form.classList.add('sent');
+          showStatus('success', form.dataset.success);
+        } else {
+          showStatus('error', 'Your request could not be sent. Check your details and connection, then try again.');
+        }
+      } catch {
+        showStatus('error', 'Your request could not be sent. Check your connection and try again.');
+      } finally {
+        sending = false; btn.disabled = false; btn.textContent = label;
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
