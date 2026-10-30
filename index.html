@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apertura CX</title>
+<meta name="description" content="Apertura CX is a Melbourne customer experience and retail growth consultancy for founder-led brands. A focused audit, seen through your customers' eyes, to find the openings in your business.">
+<meta property="og:title" content="Apertura CX">
+<meta property="og:description" content="A focused audit, seen through your customers' eyes, to find the openings in your business.">
+<meta name="theme-color" content="#2A2421">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232A2421'/%3E%3Cpolygon points='16,9 22,12.5 22,19.5 16,23 10,19.5 10,12.5' fill='%23F4EFE7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Inter+Tight:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head" id="head">
+  <a class="brand" href="index.html" aria-label="Apertura CX home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1"/><polygon points="16,9.5 21.6,12.75 21.6,19.25 16,22.5 10.4,19.25 10.4,12.75" fill="none" stroke="#B07C57" stroke-width="1.2"/></svg>
+    <span class="word">APERTURA <span class="cx">CX</span></span>
+  </a>
+  <div class="head-right">
+    <nav class="nav" aria-label="Main">
+      <a class="text-link" href="approach.html">Approach</a>
+      <a class="text-link" href="about.html">About</a>
+      <a class="begin" href="begin.html">Request a Snapshot</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-word">Menu</span><span class="bars" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu-inner">
+    <nav class="menu-links" aria-label="Menu">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="approach.html">Approach</a>
+      <a href="about.html">About</a>
+      <a href="begin.html">Request a Snapshot</a>
+    </nav>
+    <div class="menu-foot">
+      <p>Customer experience and retail growth for founder-led brands in retail, hospitality and property. Melbourne.</p>
+      <a href="https://www.linkedin.com/in/carl-nave/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+  <!-- The aperture -->
+  <section class="stage" id="stage" aria-label="Introduction">
+    <div class="frame">
+      <div class="reveal">
+        <div class="entry" id="entry">
+          <p class="origin">From the Latin <em>apertura</em>, from <em>aperire</em>, to open. Carried into Italian unchanged.</p>
+          <h1>Apertura</h1>
+          <p class="say">/aperˈtuːra/</p>
+          <ol class="senses">
+            <li><span class="n">1</span><strong>Aperture</strong><span class="d">The opening in a lens that governs how much light is let in.</span></li>
+            <li><span class="n">2</span><strong>Opening</strong><span class="d">A way in, a beginning, the moment something closed becomes visible.</span></li>
+          </ol>
+          <p class="essence" id="essence">This is the essence of the practice. A focused audit, conducted through the lens of your customers and end users, to find the openings your business has yet to see.</p>
+        </div>
+      </div>
+
+      <canvas id="iris" aria-hidden="true"></canvas>
+
+      <div class="hero-copy" id="heroCopy">
+        <h2>Every business has openings it cannot see from the inside.</h2>
+        <p>Apertura CX studies your business the way your customers experience it, and shows you where the experience opens up and where it quietly closes.</p>
+      </div>
+      <div class="readout" id="readout" aria-hidden="true">
+        <div class="f" id="fstop">f/22</div>
+        <div class="cue" id="cue">Scroll to open</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What customer experience is -->
+  <section class="block cx">
+    <div class="wrap">
+      <div class="cx-head">
+        <h2>Every brand is experienced long before it is chosen, and long after it is paid for.</h2>
+        <div class="copy">
+          <p>Customer experience is the full arc of that relationship. First impression and reputation, the enquiry and the visit, the purchase, the handover and the care that follows.</p>
+          <p>It moves between screen and space without pause. A polished website cannot rescue an indifferent welcome, and an exceptional venue cannot make up for a booking that was never confirmed. Customers experience it all as one. We call it phygital.</p>
+        </div>
+      </div>
+      <div class="arc-intro">
+        <h3>The Customer Journey</h3>
+        <p>Six stages every customer passes through, whatever the business. We begin by understanding your journey across them, in the language of your industry. We then audit each stage, review what we find, shape the strategy and see it through to implementation.</p>
+      </div>
+      <ol class="journey" aria-label="The Customer Journey, six stages of the customer journey, online and in person">
+        <li class="j-labels" aria-hidden="true"><span></span><span>Online</span><span>In person</span></li>
+        <li><h3>Awareness</h3><p><span class="tag">Online</span>A search result, a feed, a review left by a stranger</p><p><span class="tag">In person</span>A shopfront, a recommendation over dinner</p></li>
+        <li><h3>Consideration</h3><p><span class="tag">Online</span>A form, an email, a message sent late at night</p><p><span class="tag">In person</span>A phone call, a question asked at the door</p></li>
+        <li><h3>Experience</h3><p><span class="tag">Online</span>Booking a table, an appointment, an inspection</p><p><span class="tag">In person</span>The welcome at the store, the venue, the display suite</p></li>
+        <li><h3>Decision</h3><p><span class="tag">Online</span>The checkout, the deposit, the contract</p><p><span class="tag">In person</span>The conversation that settles it</p></li>
+        <li><h3>Delivery</h3><p><span class="tag">Online</span>Confirmations, tracking, progress updates</p><p><span class="tag">In person</span>The delivery, the meal, the handover of keys</p></li>
+        <li><h3>Advocacy</h3><p><span class="tag">Online</span>A review, a referral, a reason to return</p><p><span class="tag">In person</span>Being recognised, and bringing someone with them</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- The lens -->
+  <section class="block lens">
+    <div class="wrap statement">
+      <h2>We look from the customer's side of the counter.</h2>
+      <div class="copy">
+        <p>Most businesses judge their experience from the inside looking out, through reports, dashboards and team meetings. Customers only ever see it from the outside looking in.</p>
+        <p>We walk the whole journey as they do, online and in person, and return with a clear account of what is working, where it falters, and what deserves attention first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust / Conversion / Loyalty -->
+  <section class="block openings">
+    <div class="wrap">
+      <div class="lead">
+        <h2>Every finding is placed against one of three openings.</h2>
+        <p>It keeps the work anchored to commercial reality. You always know what a problem is costing, and what resolving it is worth.</p>
+      </div>
+      <ul class="rows">
+        <li class="row" tabindex="0" data-open=".34">
+          <canvas aria-hidden="true"></canvas>
+          <div><h3>Trust</h3><div class="stop">Where belief is won or lost</div></div>
+          <p>First impressions, consistency, and whether promises are kept. The smallest details, packaging that falls short of the price point or a reply that never arrives, can quietly undo a strong brand.</p>
+        </li>
+        <li class="row" tabindex="0" data-open=".56">
+          <canvas aria-hidden="true"></canvas>
+          <div><h3>Conversion</h3><div class="stop">Where interest becomes a decision</div></div>
+          <p>The enquiry, the booking, the inspection, the counter and the checkout. The moments where a customer hesitates, is asked to repeat themselves, or is simply left waiting.</p>
+        </li>
+        <li class="row" tabindex="0" data-open=".8">
+          <canvas aria-hidden="true"></canvas>
+          <div><h3>Loyalty</h3><div class="stop">Where a purchase becomes a relationship</div></div>
+          <p>Delivery, aftercare and everything that follows. The most valuable growth in a business is often the customer it has already won.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- How it starts -->
+  <section class="block path">
+    <div class="wrap">
+      <h2>Begin with a clear view of the experience as it stands today.</h2>
+      <p class="intro">Each stage widens the view. Most clients begin with a Snapshot or a Diagnostic, and decide what follows once the findings are in front of them.</p>
+      <ol class="steps">
+        <li data-open=".22" tabindex="0">
+          <canvas aria-hidden="true"></canvas>
+          <h3>Journey Fracture Snapshot</h3>
+          <div class="note">By invitation</div>
+          <p>A short intake, followed by a focused review of up to four points where your experience is losing trust, momentum or sales. Delivered within five business days.</p>
+        </li>
+        <li data-open=".52" tabindex="0">
+          <canvas aria-hidden="true"></canvas>
+          <h3>CX and Retail Growth Diagnostic</h3>
+          <div class="note">Two to three weeks</div>
+          <p>A live discovery workshop with you, followed by a friction map, a commercial opportunity map and a 90 day action plan with named owners and dates.</p>
+        </li>
+        <li data-open=".86" tabindex="0">
+          <canvas aria-hidden="true"></canvas>
+          <h3>Strategy, rhythm and advisory</h3>
+          <div class="note">When the business is ready</div>
+          <p>Customer journey and service design, an operating rhythm your team can sustain, team training, and ongoing fractional advisory.</p>
+        </li>
+      </ol>
+      <a class="more" href="approach.html">See the full approach</a>
+    </div>
+  </section>
+
+  <!-- Who it is for -->
+  <section class="block founder">
+    <div class="wrap grid">
+      <h2>Made for brands still shaped by the people who founded them.</h2>
+      <div class="bio">
+        <p>We work with founder-led businesses in retail, hospitality, property and premium services. Brands with real substance, where the experience has not always kept pace with the growth.</p>
+        <p>The advice is built to fit a real business, with a finite budget, a lean team and a founder whose attention is already spoken for.</p>
+        <ul class="facts">
+          <li><b>Outside in</b><span>We begin where your customer begins, well before the org chart.</span></li>
+          <li><b>Commercial first</b><span>Every recommendation is weighed against cost, capability and return.</span></li>
+          <li><b>Yours to keep</b><span>Plans, rhythms and standards your team can sustain without us.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Invitation -->
+  <section class="block invite">
+    <div class="wrap grid">
+      <div>
+        <h2>See your business the way your customers do.</h2>
+        <p>Snapshots are offered by invitation, and every request is read personally. Tell us a little about your brand, and we will respond within two business days.</p>
+        <a class="cta" href="begin.html" id="ctaBtn">Request a Snapshot</a>
+      </div>
+      <canvas id="ctaIris" aria-hidden="true"></canvas>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><div class="bar">
+    <div>Apertura CX, Melbourne. © 2026</div>
+    <nav aria-label="Footer">
+      <a href="approach.html">Approach</a>
+      <a href="about.html">About</a>
+      <a href="begin.html">Request a Snapshot</a>
+      <a href="https://www.linkedin.com/in/carl-nave/" rel="noopener">LinkedIn</a>
+    </nav>
+  </div></div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TAU = Math.PI * 2;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const STOPS = ['22', '16', '11', '8', '5.6', '4', '2.8', '2', '1.4'];
+
+  /* Draws a lens iris. Blades tile the space between the polygonal opening and the housing ring. */
+  function drawIris(ctx, o) {
+    const n = o.n, v = [];
+    for (let i = 0; i < n; i++) {
+      const a = o.rot + i * TAU / n;
+      v.push([o.cx + o.r * Math.cos(a), o.cy + o.r * Math.sin(a)]);
+    }
+    const e = v.map((p, i) => {
+      const q = v[(i + 1) % n], dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1;
+      return [dx / l, dy / l];
+    });
+    ctx.save();
+    ctx.beginPath(); ctx.arc(o.cx, o.cy, o.house, 0, TAU); ctx.clip();
+    for (let i = 0; i < n; i++) {
+      const a = v[i], b = v[(i + 1) % n], ep = e[(i - 1 + n) % n], ei = e[i], L = o.L;
+      ctx.beginPath();
+      ctx.moveTo(a[0] + ep[0] * L, a[1] + ep[1] * L);
+      ctx.lineTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+      ctx.lineTo(b[0] + ei[0] * L, b[1] + ei[1] * L);
+      ctx.closePath();
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      let nx = mx - o.cx, ny = my - o.cy; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
+      const g = ctx.createLinearGradient(mx, my, mx + nx * o.depth, my + ny * o.depth);
+      g.addColorStop(0, i % 2 ? o.lightA : o.lightB);
+      g.addColorStop(1, o.base);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(b[0], b[1]); ctx.lineTo(b[0] + ei[0] * L, b[1] + ei[1] * L);
+      ctx.strokeStyle = o.seam; ctx.lineWidth = o.lw; ctx.stroke();
+    }
+    ctx.beginPath(); v.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath();
+    ctx.strokeStyle = o.edge; ctx.lineWidth = o.lw; ctx.stroke();
+    ctx.restore();
+    if (o.ring > 0) {
+      ctx.beginPath(); ctx.arc(o.cx, o.cy, o.house, 0, TAU);
+      ctx.strokeStyle = `rgba(176,124,87,${o.ring})`; ctx.lineWidth = o.lw; ctx.stroke();
+    }
+  }
+
+  function fit(cv) {
+    const d = Math.min(devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = Math.round(w * d); cv.height = Math.round(h * d);
+    const c = cv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+    return { c, w, h };
+  }
+
+  /* ---------- Hero aperture ---------- */
+  const stage = document.getElementById('stage');
+  const cv = document.getElementById('iris');
+  const entry = document.getElementById('entry');
+  const essence = document.getElementById('essence');
+  const heroCopy = document.getElementById('heroCopy');
+  const readout = document.getElementById('readout');
+  const fstop = document.getElementById('fstop');
+  const cue = document.getElementById('cue');
+  const head = document.getElementById('head');
+  let hero = fit(cv), lastW = innerWidth, lastH = innerHeight;
+  let ptr = { x: 0, y: 0 }, drift = { x: 0, y: 0 }, shown = -1;
+
+  addEventListener('resize', () => {
+    if (innerWidth !== lastW || Math.abs(innerHeight - lastH) > 140) {
+      lastW = innerWidth; lastH = innerHeight; hero = fit(cv); minis.forEach(m => m.f = fit(m.cv)); cta.f = fit(cta.cv);
+    }
+  });
+  addEventListener('pointermove', ev => {
+    ptr.x = (ev.clientX / innerWidth - .5); ptr.y = (ev.clientY / innerHeight - .5);
+  }, { passive: true });
+
+  function progress() {
+    const r = stage.getBoundingClientRect(), span = stage.offsetHeight - innerHeight;
+    return clamp(-r.top / span);
+  }
+
+  function drawHero(t) {
+    const { c, w, h } = hero, p = progress();
+    const open = ease(clamp((p - .06) / .74));
+    const wide = w > 900;
+    drift.x = lerp(drift.x, reduce ? 0 : ptr.x, .05);
+    drift.y = lerp(drift.y, reduce ? 0 : ptr.y, .05);
+    const still = 1 - open;
+    const baseX = wide ? w * .69 : w * .5, baseY = wide ? h * .47 : h * .42;
+    const cx = lerp(baseX, w / 2, open) + drift.x * 28 * still;
+    const cy = lerp(baseY, h / 2, open) + drift.y * 22 * still;
+    const m = Math.min(w, h);
+    const houseClosed = wide ? m * .33 : m * .38;
+    const house = lerp(houseClosed, Math.hypot(w, h), Math.pow(open, 2.2));
+    const rMin = Math.max(16, m * .04);
+    const breathe = reduce ? 1 : 1 + .14 * Math.sin(t / 900) * still;
+    const r = Math.min(house * .98, lerp(rMin * breathe, Math.hypot(w, h) * .64, Math.pow(open, 1.1)));
+    const rot = -Math.PI / 2 + open * 1.25 + (reduce ? 0 : .05 * Math.sin(t / 2600) * still);
+
+    c.clearRect(0, 0, w, h);
+    // flat espresso outside the housing, transparent inside the opening
+    c.save();
+    c.beginPath(); c.rect(0, 0, w, h); c.arc(cx, cy, house, 0, TAU, true);
+    c.fillStyle = '#2A2421'; c.fill();
+    c.restore();
+    drawIris(c, {
+      cx, cy, r, rot, n: 7, house, L: Math.hypot(w, h) * 2, depth: house * .9,
+      base: '#2A2421', lightA: '#4a3e37', lightB: '#433832',
+      seam: 'rgba(161,138,120,.32)', edge: 'rgba(176,124,87,.55)', lw: 1, ring: .5 * clamp(1 - open * 2.2)
+    });
+    // f-stop scale around the housing
+    const ring = clamp(1 - open * 3);
+    if (ring > 0) {
+      c.save();
+      c.fillStyle = `rgba(161,138,120,${.75 * ring})`;
+      c.font = `400 ${wide ? 12 : 10}px "DM Sans", sans-serif`;
+      c.textAlign = 'center'; c.textBaseline = 'middle';
+      const sel = Math.round(open * (STOPS.length - 1));
+      STOPS.forEach((s, i) => {
+        const a = -Math.PI * .5 - .9 + i * (1.8 / (STOPS.length - 1));
+        const rr = house + (wide ? 26 : 20);
+        if (i === sel) c.fillStyle = `rgba(176,124,87,${ring})`;
+        c.fillText(s, cx + rr * Math.cos(a), cy + rr * Math.sin(a));
+        c.fillStyle = `rgba(161,138,120,${.75 * ring})`;
+      });
+      c.restore();
+    }
+
+    // the dictionary entry stays centred in the opening
+    entry.style.transform = `translate(${cx - w / 2}px, ${cy - h / 2}px)`;
+    const hide = clamp((p - .03) / .2);
+    heroCopy.style.opacity = 1 - hide;
+    heroCopy.style.transform = `translateY(${-24 * hide}px)`;
+    heroCopy.style.visibility = hide >= 1 ? 'hidden' : 'visible';
+    essence.classList.toggle('show', open > .9);
+    const light = open > .62;
+    cue.textContent = open > .97 ? 'Fully open' : 'Scroll to open';
+    readout.classList.toggle('on-light', light);
+    readout.style.opacity = 1 - clamp((p - .9) / .08);
+    const idx = Math.round(open * (STOPS.length - 1));
+    if (idx !== shown) { fstop.textContent = 'f/' + STOPS[idx]; shown = idx; }
+    const past = stage.getBoundingClientRect().bottom < 70;
+    head.classList.toggle('on-light', light && !past);
+    head.classList.toggle('solid', past);
+  }
+
+  /* ---------- Three openings ---------- */
+  const minis = [...document.querySelectorAll('[data-open]')].map(row => {
+    const cv = row.querySelector('canvas');
+    const m = { row, cv, f: fit(cv), target: +row.dataset.open, cur: .02, boost: 0, seen: false };
+    row.addEventListener('pointerenter', () => m.boost = .2);
+    row.addEventListener('pointerleave', () => m.boost = 0);
+    row.addEventListener('focus', () => m.boost = .2);
+    row.addEventListener('blur', () => m.boost = 0);
+    return m;
+  });
+  const cta = { cv: document.getElementById('ctaIris'), cur: .05, boost: 0, seen: false };
+  cta.f = fit(cta.cv);
+  const btn = document.getElementById('ctaBtn');
+  btn.addEventListener('pointerenter', () => cta.boost = 1);
+  btn.addEventListener('pointerleave', () => cta.boost = 0);
+  btn.addEventListener('focus', () => cta.boost = 1);
+  btn.addEventListener('blur', () => cta.boost = 0);
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const m = minis.find(x => x.row === e.target) || (e.target === cta.cv ? cta : null);
+    if (m && e.isIntersecting) m.seen = true;
+  }), { threshold: .5 });
+  minis.forEach(m => io.observe(m.row)); io.observe(cta.cv);
+
+  function drawMini(m, goal, bg, k) {
+    m.cur = reduce ? goal : lerp(m.cur, goal, k);
+    const { c, w, h } = m.f, R = Math.min(w, h) / 2 - 2;
+    c.clearRect(0, 0, w, h);
+    c.beginPath(); c.arc(w / 2, h / 2, R, 0, TAU); c.fillStyle = bg; c.fill();
+    drawIris(c, {
+      cx: w / 2, cy: h / 2, r: lerp(R * .08, R * 1.05, m.cur), rot: -Math.PI / 2 + m.cur * 1.25, n: 7,
+      house: R, L: R * 4, depth: R * .9, base: '#2A2421', lightA: '#5a4a40', lightB: '#52443b',
+      seam: 'rgba(161,138,120,.45)', edge: 'rgba(176,124,87,.7)', lw: 1, ring: .9
+    });
+  }
+
+  function frame(t) {
+    drawHero(t);
+    minis.forEach(m => drawMini(m, m.seen ? clamp(m.target + m.boost) : .02, '#F4EFE7', .06));
+    drawMini(cta, cta.seen ? (cta.boost ? .97 : .22 + (reduce ? 0 : .04 * Math.sin(t / 900))) : .02, '#F4EFE7', .07);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>
