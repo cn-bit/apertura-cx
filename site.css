@@ -428,3 +428,23 @@ section.block h3{font-family:var(--display);font-weight:400;font-size:22px;lette
 footer{padding-block:0 40px}
 #lens3d{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .readout{left:var(--gutter);right:auto;text-align:left}
+
+/* ---------- Image inside the opened lens ---------- */
+.reveal{overflow:hidden}
+.reveal-img{position:absolute;inset:0;display:block;pointer-events:none}
+.reveal-img img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;mix-blend-mode:multiply;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 74%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 74%,transparent 100%)}
+.entry{position:relative;z-index:1;height:100%;width:100%;max-width:none;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding-block:clamp(96px,13vh,140px) clamp(40px,8vh,90px)}
+.entry h1{font-size:clamp(56px,9vw,140px)}
+.essence{margin:0 auto}
+.defs{padding-block:clamp(36px,5vw,64px);border-bottom:1px solid var(--rule)}
+.defs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,56px)}
+.defs-grid p{color:var(--ink-soft);margin-top:8px;font-size:16px;max-width:380px}
+@media (max-width:720px){
+  .reveal-img{inset:auto 0;top:50%;height:auto;transform:translateY(-50%)}
+  .reveal-img img{height:auto;width:170%;max-width:none;margin-left:-35%;object-fit:contain;
+    -webkit-mask-image:radial-gradient(ellipse 34% 46% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 34% 46% at 50% 50%,#000 55%,transparent 100%)}
+  .entry{padding-block:120px 60px}
+  .entry h1{font-size:clamp(52px,16vw,76px)}
+  .defs-grid{grid-template-columns:1fr;gap:18px}
+}

@@ -55,14 +55,15 @@
   <section class="stage" id="stage" aria-label="Introduction" data-field="#A05A33" data-left="" data-ink="244,239,231" data-sel="42,36,33" data-ring="244,239,231" data-hero-light="0" data-lens="photo" data-reveal-light="1">
     <div class="frame">
       <div class="reveal field-ivory">
+        <picture class="reveal-img">
+          <source type="image/webp" srcset="img/journey-900.webp 900w, img/journey.webp 1672w" sizes="(max-width: 720px) 160vw, 100vw">
+          <img src="img/journey.jpg" srcset="img/journey-900.jpg 900w, img/journey.jpg 1672w" sizes="(max-width: 720px) 160vw, 100vw" width="1672" height="941" alt="Six connected circles along a flowing line, representing a customer journey from first impression to lasting loyalty." decoding="async" fetchpriority="high">
+        </picture>
         <div class="entry" id="entry">
-          <h1>Apertura</h1>
-          <p class="say">/aperˈtuːra/</p>
-          <div class="langs">
-            <div><span class="lk">Italian · apertura</span><p>An opening. A space through which light passes, or something beyond becomes visible.</p></div>
-            <div><span class="lk">Latin · aperire</span><p>To open, uncover or reveal. To make accessible what was previously closed.</p></div>
+          <div class="entry-top">
+            <h1>Apertura</h1>
+            <p class="say">/aperˈtuːra/</p>
           </div>
-          <div class="photo"><span class="lk">In photography</span><strong>Aperture</strong><p>The opening in a lens that controls how much light enters.</p></div>
           <div class="essence" id="essence">
             <h2>What was always there becomes easier to see.</h2>
             <p>The details, the relationships, the possibilities that emerge when we change the way we look.</p>
@@ -85,6 +86,15 @@
         <div class="f" id="fstop">f/22</div>
         <div class="cue" id="cue">Scroll to open</div>
       </div>
+    </div>
+  </section>
+
+  <!-- 02 Apertura definitions -->
+  <section class="defs field-ivory" aria-label="The meaning of Apertura">
+    <div class="wrap defs-grid">
+      <div><span class="lk">Italian · apertura</span><p>An opening. A space through which light passes, or something beyond becomes visible.</p></div>
+      <div><span class="lk">Latin · aperire</span><p>To open, uncover or reveal. To make accessible what was previously closed.</p></div>
+      <div><span class="lk">In photography · aperture</span><p>The opening in a lens that controls how much light enters.</p></div>
     </div>
   </section>
 
@@ -366,6 +376,7 @@
   const entry = document.getElementById('entry');
   const essence = document.getElementById('essence');
   const heroCopy = document.getElementById('heroCopy');
+  const entryTop = document.querySelector('.entry-top');
   const heroPop = document.getElementById('heroPop');
   const SD = document.getElementById('stage').dataset;
   const readout = document.getElementById('readout');
@@ -428,6 +439,7 @@
     heroPop.style.opacity = 1 - hide;
     heroPop.style.visibility = hide >= 1 ? 'hidden' : 'visible';
     essence.classList.toggle('show', open > .9);
+    entryTop.style.opacity = clamp((open - .45) / .35);
     const revealed = open > .62;
     const light = revealed ? SD.revealLight === '1' : SD.heroLight === '1';
     cue.textContent = open > .97 ? 'Fully open' : 'Scroll to open';
