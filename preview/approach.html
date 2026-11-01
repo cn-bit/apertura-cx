@@ -89,36 +89,47 @@
           <p>The method is designed to turn independent observations into informed decisions, clear recommendations and work your team can confidently carry forward.</p>
         </div>
       </div>
+      <div class="method-motif" data-open=".6" aria-hidden="true"><canvas></canvas></div>
       <ol class="stages">
-        <li data-open=".1" tabindex="0">
+        <li class="mstage" data-open=".1">
           <canvas aria-hidden="true"></canvas>
-          <h3><span class="num">01</span>Understand</h3>
-          <p>We begin with a conversation about your business, its ambitions and the experience you intend to deliver. Together, we establish the priorities, scope and measures that will guide the work.</p>
-          <p class="out"><span>Your decision</span>Approve the scope, objectives and priorities.</p>
+          <h3><button class="mstage-btn" type="button" aria-expanded="false" aria-controls="method-01"><span class="num">01</span><span class="mstage-name">Understand</span><span class="hx-chev" aria-hidden="true"></span></button></h3>
+          <div class="mstage-panel" id="method-01">
+            <p>We begin with a conversation about your business, its ambitions and the experience you intend to deliver. Together, we establish the priorities, scope and measures that will guide the work.</p>
+            <p class="out"><span>Your decision</span>Approve the scope, objectives and priorities.</p>
+          </div>
         </li>
-        <li data-open=".3" tabindex="0">
+        <li class="mstage" data-open=".3">
           <canvas aria-hidden="true"></canvas>
-          <h3><span class="num">02</span>Audit</h3>
-          <p>We examine the customer journey as it is experienced today, across digital channels and physical encounters. Enquiries, communications, service interactions and customer feedback reveal where expectations are met and where the experience may falter.</p>
-          <p class="out"><span>What you receive</span>An evidence-based account of the current experience.</p>
+          <h3><button class="mstage-btn" type="button" aria-expanded="false" aria-controls="method-02"><span class="num">02</span><span class="mstage-name">Audit</span><span class="hx-chev" aria-hidden="true"></span></button></h3>
+          <div class="mstage-panel" id="method-02">
+            <p>We examine the customer journey as it is experienced today, across digital channels and physical encounters. Enquiries, communications, service interactions and customer feedback reveal where expectations are met and where the experience may falter.</p>
+            <p class="out"><span>What you receive</span>An evidence-based account of the current experience.</p>
+          </div>
         </li>
-        <li data-open=".5" tabindex="0">
+        <li class="mstage" data-open=".5">
           <canvas aria-hidden="true"></canvas>
-          <h3><span class="num">03</span>Review</h3>
-          <p>Findings are examined through Trust, Conversion and Loyalty, then assessed against their commercial significance and the practical effort required to address them.</p>
-          <p class="out"><span>Your decision</span>Agree which findings deserve priority.</p>
+          <h3><button class="mstage-btn" type="button" aria-expanded="false" aria-controls="method-03"><span class="num">03</span><span class="mstage-name">Review</span><span class="hx-chev" aria-hidden="true"></span></button></h3>
+          <div class="mstage-panel" id="method-03">
+            <p>Findings are examined through Trust, Conversion and Loyalty, then assessed against their commercial significance and the practical effort required to address them.</p>
+            <p class="out"><span>Your decision</span>Agree which findings deserve priority.</p>
+          </div>
         </li>
-        <li data-open=".7" tabindex="0">
+        <li class="mstage" data-open=".7">
           <canvas aria-hidden="true"></canvas>
-          <h3><span class="num">04</span>Strategise</h3>
-          <p>We translate the findings into a considered direction for improvement, with clear recommendations, responsibilities and priorities shaped around your business and its resources.</p>
-          <p class="out"><span>What you receive</span>A practical strategy and roadmap for change.</p>
+          <h3><button class="mstage-btn" type="button" aria-expanded="false" aria-controls="method-04"><span class="num">04</span><span class="mstage-name">Strategise</span><span class="hx-chev" aria-hidden="true"></span></button></h3>
+          <div class="mstage-panel" id="method-04">
+            <p>We translate the findings into a considered direction for improvement, with clear recommendations, responsibilities and priorities shaped around your business and its resources.</p>
+            <p class="out"><span>What you receive</span>A practical strategy and roadmap for change.</p>
+          </div>
         </li>
-        <li data-open=".9" tabindex="0">
+        <li class="mstage" data-open=".9">
           <canvas aria-hidden="true"></canvas>
-          <h3><span class="num">05</span>Implement</h3>
-          <p>Your team or existing partners put the agreed recommendations into practice, supported by a clear plan, responsibilities and measures for assessing progress. Apertura can provide additional implementation support or an independent review where required.</p>
-          <p class="out"><span>What you receive</span>A structured handover and an agreed basis for measuring progress.</p>
+          <h3><button class="mstage-btn" type="button" aria-expanded="false" aria-controls="method-05"><span class="num">05</span><span class="mstage-name">Implement</span><span class="hx-chev" aria-hidden="true"></span></button></h3>
+          <div class="mstage-panel" id="method-05">
+            <p>Your team or existing partners put the agreed recommendations into practice, supported by a clear plan, responsibilities and measures for assessing progress. Apertura can provide additional implementation support or an independent review where required.</p>
+            <p class="out"><span>What you receive</span>A structured handover and an agreed basis for measuring progress.</p>
+          </div>
         </li>
       </ol>
     </div>
@@ -357,6 +368,7 @@
       const goal = m.seen ? clamp(m.target + m.boost) : .02;
       m.cur = reduce ? goal : lerp(m.cur, goal, .06);
       const { c, w, h } = m.f, R = Math.min(w, h) / 2 - 2;
+      if (R <= 0) { if (m.cv.clientWidth) m.f = fit(m.cv); return; }
       c.clearRect(0, 0, w, h);
       c.beginPath(); c.arc(w / 2, h / 2, R, 0, TAU); c.fillStyle = '#F4EFE7'; c.fill();
       drawIris(c, { cx: w / 2, cy: h / 2, r: lerp(R * .08, R * 1.05, m.cur), rot: -Math.PI / 2 + m.cur * 1.25, n: 7,
@@ -366,6 +378,32 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+/* Methodology. Five stages side by side on wide screens; a single-item accordion on tablets and phones. */
+(() => {
+  const mq = matchMedia('(max-width: 900px)');
+  const items = [...document.querySelectorAll('.mstage')];
+  const btns = items.map(li => li.querySelector('.mstage-btn'));
+  function setOpen(li, open) {
+    li.classList.toggle('is-open', open);
+    li.querySelector('.mstage-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function apply() {
+    btns.forEach((b, i) => {
+      if (mq.matches) { b.removeAttribute('tabindex'); b.removeAttribute('aria-disabled'); setOpen(items[i], items[i].classList.contains('is-open')); }
+      else { b.setAttribute('tabindex', '-1'); b.setAttribute('aria-disabled', 'true'); b.removeAttribute('aria-expanded'); }
+    });
+  }
+  btns.forEach((b, i) => b.addEventListener('click', () => {
+    if (!mq.matches) return;
+    const open = !items[i].classList.contains('is-open');
+    items.forEach(li => setOpen(li, false));
+    setOpen(items[i], open);
+  }));
+  apply();
+  mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
 })();
 </script>
 </body>
