@@ -554,7 +554,7 @@
   }
   size();
   requestAnimationFrame(() => root.classList.add('hx-in'));
-  const DELAY = 350, DUR = 1900;
+  const DELAY = 700, DUR = 4200;
   let start = null, shown = -1;
   function frame(now) {
     if (start === null) start = now;
@@ -570,7 +570,7 @@
     const i = Math.round(e * (STOPS.length - 1));
     if (i !== shown) { fLabel.textContent = 'f/' + STOPS[i]; shown = i; }
     if (t < 1) requestAnimationFrame(frame);
-    else { root.classList.add('hx-open'); setTimeout(() => { cv.remove(); fLabel.remove(); }, 700); }
+    else { root.classList.add('hx-open'); setTimeout(() => { cv.remove(); fLabel.remove(); }, 1100); }
   }
   requestAnimationFrame(frame);
   addEventListener('resize', size, { once: true });
