@@ -690,40 +690,134 @@ footer{padding-block:0 40px}
 .hx-lens-f{position:absolute;left:16px;top:14px;font-family:var(--display);font-weight:200;font-size:clamp(22px,2.2vw,30px);color:#F4EFE7;letter-spacing:-.01em;font-variant-numeric:tabular-nums;transition:opacity 1s ease;pointer-events:none}
 .hx-open .hx-lens-f{opacity:0}
 
-/* focus pull on landing; content is present and laid out from the first frame */
-.hx-intro .hx-hero .hx-h1,.hx-intro .hx-hero .hx-p1,.hx-intro .hx-hero .hx-p2,.hx-intro .hx-hero .hx-btn,.hx-intro .hx-hero .hx-ph{
-  filter:blur(10px);opacity:.25;transform:translateY(8px);
-  transition:filter 1.8s cubic-bezier(.2,.7,.2,1),opacity 1.8s ease,transform 1.8s cubic-bezier(.2,.7,.2,1)}
-.hx-intro .hx-hero .hx-ph{transform:scale(1.06);filter:blur(16px);opacity:1;transition-duration:4.4s}
-.hx-intro.hx-in .hx-hero .hx-h1,.hx-intro.hx-in .hx-hero .hx-p1,.hx-intro.hx-in .hx-hero .hx-p2,.hx-intro.hx-in .hx-hero .hx-btn,.hx-intro.hx-in .hx-hero .hx-ph{filter:none;opacity:1;transform:none}
-.hx-intro.hx-in .hx-hero .hx-p1{transition-delay:.3s}
-.hx-intro.hx-in .hx-hero .hx-p2{transition-delay:.55s}
-.hx-intro.hx-in .hx-hero .hx-btn{transition-delay:.75s}
-.hx-intro.hx-in .hx-hero .hx-ph{transition-delay:.7s}
+/* focus pull on landing, applied to the hero image only; headline and copy are sharp from the first frame */
+.hx-intro .hx-hero .hx-ph{transform:scale(1.05);filter:blur(14px);transition:filter 4.4s cubic-bezier(.2,.7,.2,1),transform 4.4s cubic-bezier(.2,.7,.2,1);transition-delay:.7s}
+.hx-intro.hx-in .hx-hero .hx-ph{filter:none;transform:none}
 @media (prefers-reduced-motion:reduce){.hx-lens-iris,.hx-lens-f{display:none}}
 
-/* ---------- Methodology: desktop columns, single-item accordion at 900px and below ---------- */
-.mstage-btn{all:unset;display:block;cursor:default}
-.mstage-btn .num{display:block}
-.mstage-btn .hx-chev{display:none}
+/* ---------- Shared accordions (methodology, journey audit, FAQ) ----------
+   Rows become a single-item accordion only when script adds .acc-on, so without script everything shows. */
+.mstage-btn{all:unset;display:none;cursor:pointer;box-sizing:border-box}
+.acc-label{display:block}
+.acc-label .num{display:block}
 .mstage-name{display:block}
-.method-motif{display:none}
 .mstage-btn:focus-visible{outline:2px solid #B07C57;outline-offset:4px}
-@media (max-width:900px){
-  .method-motif{display:block;margin-top:32px}
-  .method-motif canvas{width:64px;height:64px}
-  .stages{display:block;margin-top:20px;border-top:1px solid var(--rule)}
-  .stages li.mstage{padding:0;border-bottom:1px solid var(--rule)}
-  .stages li.mstage::before{display:none}
-  .stages li.mstage canvas{display:none}
-  .stages h3{margin:0!important;font-size:inherit!important}
-  .mstage-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding-block:10px;cursor:pointer;box-sizing:border-box}
-  .mstage-btn .num{display:inline;min-width:22px;margin:0;font-size:13px;font-weight:500;color:var(--bronze)}
-  .mstage-name{flex:1;font-family:var(--display);font-weight:300;font-size:clamp(22px,5.6vw,26px);letter-spacing:-.02em;color:var(--espresso)}
-  .mstage-btn .hx-chev{display:block}
-  .mstage.is-open .hx-chev::after{transform:translate(-50%,-50%) rotate(0)}
-  .mstage-panel{display:none;padding:0 0 22px 36px}
-  .mstage.is-open .mstage-panel{display:block}
-  .mstage-panel p{margin-top:0!important}
-  .mstage-panel .out{margin-top:14px!important}
+.method-motif{display:none}
+.acc-on{display:block!important;border-top:1px solid var(--rule);margin-top:20px}
+.acc-on > .mstage{display:block!important;padding:0!important;border:0!important;border-bottom:1px solid var(--rule)!important;margin:0}
+.acc-on > .mstage::before{display:none!important}
+.acc-on > .mstage canvas{display:none}
+.acc-on h3{margin:0!important;font-size:inherit!important;font-weight:inherit!important}
+.acc-on .acc-label{display:none}
+.acc-on .mstage-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding-block:10px;cursor:pointer}
+.acc-on .mstage-btn .num{display:inline;min-width:22px;margin:0;font-size:13px;font-weight:500;color:var(--bronze)}
+.acc-on .mstage-name{flex:1;font-family:var(--display);font-weight:300;font-size:clamp(21px,5.4vw,26px);line-height:1.2;letter-spacing:-.02em;color:var(--espresso)}
+.acc-on .faq-item .mstage-name{font-size:clamp(19px,4.8vw,22px)}
+.acc-on .mstage-btn .hx-chev{display:block;color:var(--espresso)}
+.acc-on > .mstage.is-open .hx-chev::after{transform:translate(-50%,-50%) rotate(0)}
+.acc-on > .mstage:not(.is-open) .mstage-panel{display:none!important}
+.acc-on .mstage-panel{display:block;padding:0 0 22px 36px}
+.acc-on .faq-item .mstage-panel{padding-left:0}
+.acc-on .mstage-panel p{margin-top:0}
+.acc-on .mstage-panel p+p,.acc-on .mstage-panel .out{margin-top:12px!important}
+@media (max-width:900px){.method-motif{display:block;margin-top:32px}.method-motif canvas{width:64px;height:64px}}
+
+/* Approach journey audit: wide layout keeps three columns */
+.ja li.mstage{grid-template-columns:1fr 3fr}
+.ja .mstage-panel{display:grid;grid-template-columns:1.3fr 1.7fr;gap:clamp(18px,4vw,56px);align-items:baseline}
+.ja .acc-label .num,.ja .mstage-btn .num{font-size:13px;font-weight:500;color:var(--bronze);margin-bottom:6px}
+.ja .mstage-name{font-family:var(--display);font-size:clamp(24px,2.4vw,32px);font-weight:300;letter-spacing:-.025em}
+.ja h3::before{display:none}
+@media (max-width:860px){.ja li.mstage{grid-template-columns:1fr}.ja .mstage-panel{grid-template-columns:1fr;gap:8px}}
+
+/* FAQ */
+.faq-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,40px) clamp(32px,6vw,96px);margin-top:clamp(40px,5vw,64px)}
+.faq-item{border-top:1px solid var(--rule);padding-top:20px}
+.faq-item .mstage-name{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:-.01em;line-height:1.25}
+.faq-item .mstage-panel p{color:var(--ink-soft);margin-top:10px;max-width:520px}
+
+/* Folding details on mobile (conversations, service scope) */
+.care-more > summary,.svc-more > summary{list-style:none}
+.care-more > summary::-webkit-details-marker,.svc-more > summary::-webkit-details-marker{display:none}
+.care-more > summary{display:block;cursor:default}
+.care-more > summary .hx-chev{display:none}
+.svc-more{margin-top:18px;border-top:1px solid var(--rule);padding-top:12px}
+.svc-more > summary{font-size:13px;font-weight:500;color:var(--bronze);cursor:default}
+.svc-more > summary .hx-chev{display:none}
+.svc-more p{color:var(--ink-soft);font-size:15px;margin-top:6px!important;max-width:600px}
+.svc-cta{margin-top:20px}
+@media (max-width:760px){
+  .care-more > summary,.svc-more > summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;cursor:pointer}
+  .care-more > summary .hx-chev,.svc-more > summary .hx-chev{display:block}
+  .care-more[open] .hx-chev::after,.svc-more[open] .hx-chev::after{transform:translate(-50%,-50%) rotate(0)}
+  .care-more > summary{border-top:1px solid var(--rule);margin-top:28px}
+  .care-more > summary h3{margin:0}
+  .svc-more > summary{font-size:15px}
+  .faq-list{grid-template-columns:minmax(0,1fr)}
 }
+
+/* ---------- Snapshot page layout ---------- */
+.form-layout:has(.snap-glance){grid-template-columns:5fr 7fr;grid-template-areas:"glance form" "facts form";row-gap:clamp(28px,3vw,40px)}
+.snap-glance{grid-area:glance;display:grid;gap:0;border-top:1px solid var(--rule)}
+.snap-glance > div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.snap-glance dt{font-size:13px;font-weight:500;color:var(--bronze);padding-top:2px}
+.snap-glance dd{color:var(--espresso);font-size:15.5px;line-height:1.5}
+.snap-glance .fee{font-family:var(--display);font-weight:300;font-size:26px;letter-spacing:-.02em;margin-right:8px;color:var(--espresso)}
+.form-layout:has(.snap-glance) .snap-facts{grid-area:facts}
+.form-layout:has(.snap-glance) .form-card{grid-area:form}
+@media (max-width:900px){
+  .form-layout:has(.snap-glance){grid-template-columns:minmax(0,1fr);grid-template-areas:"glance" "form" "facts"}
+}
+@media (max-width:420px){.snap-glance > div{grid-template-columns:1fr;gap:2px}}
+.field input,.field select,.field textarea{min-height:48px}
+
+/* ---------- Typography comparison, option B (preview only) ----------
+   Proposed editorial serif for review. Newsreader is a proposal, not the confirmed brand typeface. */
+.type-b [data-type-test]{font-family:"Newsreader",Georgia,"Times New Roman",serif!important;font-weight:300!important;letter-spacing:-.02em!important;font-optical-sizing:auto}
+
+/* ---------- Contrast refinements (WCAG AA) ---------- */
+.field-ivory{--bronze:#8A5A3B;--taupe:#7A6656}
+.field-sand{--taupe:#6E5A4B}
+.field-bronze{--ink-soft:#FBF3EC}
+.home-v2 .hx-hero.field-bronze .hx-p2{color:#FBF3EC}
+.home-v2 .field-bronze .hx-principles p,.home-v2 .field-bronze .hx-copy p{color:#FBF3EC}
+.field .req{color:#7A6656}
+.count{color:#7A6656}
+.hx-stages-head p{color:#7A6656}
+.hx-ph-r{color:#5f4f44}
+.hx-ph-n{color:#6B4529}
+
+/* ---------- Touch targets and hero image width ---------- */
+.brand{min-height:44px}
+.menu-btn{min-height:44px}
+.nav .text-link{padding:12px 0}
+.check a{display:inline-block;padding:4px 0}
+.hx-hero-grid{grid-template-columns:max-content minmax(0,1fr) minmax(0,1.25fr)}
+.hx-hero-media{margin-left:clamp(24px,3.5vw,56px)}
+@media (max-width:900px){.hx-hero-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:900px){.hx-hero-media{margin-left:0}}
+
+/* ---------- Phone spacing ---------- */
+@media (max-width:720px){
+  section.block{padding-block:60px}
+  .page-intro{padding-block:116px 56px}
+  .sec-head{gap:16px}
+  .why-grid,.tags3,.receive-list,.offer,.faq-list,.ja,.talk-grid{margin-top:32px}
+  .why-grid{gap:24px}
+  .offer li{padding-block:24px;gap:8px}
+  .offer .o-body p+p{margin-top:8px}
+  .offer .inv{margin-top:12px!important}
+  .svc-cta{margin-top:12px}
+  .svc-more{margin-top:10px}
+}
+/* ---------- On this page (Approach, phones and tablets) ---------- */
+.onpage{display:none}
+@media (max-width:900px){
+  .onpage{display:block;margin-top:36px;border-top:1px solid var(--rule);padding-top:16px}
+  .onpage-title{font-size:13px;font-weight:500;letter-spacing:.02em;color:var(--espresso);font-family:var(--body)}
+  .onpage ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .onpage a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--rule);border-radius:999px;color:var(--espresso);text-decoration:none;font-size:14.5px}
+  .onpage a:hover,.onpage a:focus-visible{background:#F4EFE7;color:#1A1613}
+}
+html{scroll-padding-top:88px}
+@media (max-width:720px){.page-intro h1{font-size:clamp(34px,9.4vw,40px);text-wrap:pretty}}

@@ -1,0 +1,7 @@
+# Apertura CX
+# Note: crawlers read robots.txt only from the root of a domain. While the site is hosted at
+# https://cn-bit.github.io/apertura-cx/ this file takes effect once a custom domain is connected.
+User-agent: *
+Allow: /
+
+Sitemap: https://cn-bit.github.io/apertura-cx/sitemap.xml

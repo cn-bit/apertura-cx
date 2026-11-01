@@ -43,3 +43,38 @@
   });
   menu.addEventListener('click', e => { if (e.target.closest('a')) close(false); });
 })();
+
+/* Accordions. A list marked data-acc becomes a single-item accordion at or below the width given
+   (data-acc="0" means always). Above that width every panel shows and each row reads as a plain heading. */
+document.querySelectorAll('[data-acc]').forEach(group => {
+  const bp = +group.dataset.acc || 0;
+  const mq = bp ? matchMedia(`(max-width: ${bp}px)`) : null;
+  const items = [...group.children].filter(el => el.hasAttribute('data-acc-item'));
+  const active = () => !mq || mq.matches;
+  const btnOf = it => it.querySelector('[data-acc-btn]');
+  function set(it, open) {
+    it.classList.toggle('is-open', open);
+    if (active()) btnOf(it).setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function apply() {
+    const on = active();
+    group.classList.toggle('acc-on', on);
+    items.forEach(it => btnOf(it).setAttribute('aria-expanded', on && it.classList.contains('is-open') ? 'true' : 'false'));
+  }
+  items.forEach(it => btnOf(it).addEventListener('click', () => {
+    if (!active()) return;
+    const open = !it.classList.contains('is-open');
+    items.forEach(o => set(o, false));
+    set(it, open);
+  }));
+  apply();
+  if (mq) mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+});
+
+/* Disclosures that sit open on wider screens and fold away below the width given. */
+document.querySelectorAll('details[data-open-above]').forEach(d => {
+  const mq = matchMedia(`(min-width: ${d.dataset.openAbove}px)`);
+  const set = () => { d.open = mq.matches; };
+  set();
+  mq.addEventListener ? mq.addEventListener('change', set) : mq.addListener(set);
+});
