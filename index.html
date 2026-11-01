@@ -127,13 +127,11 @@
       <a class="hx-btn hx-btn-primary hx-cta1" href="approach.html">Explore our approach</a>
       <div class="hx-hero-media">
         <div class="hx-lens">
-        <figure class="hx-media" data-asset="apertura-cx-human-experience" style="--ar-d:4/5;--ar-m:4/5">
-          <div class="hx-ph" role="img" aria-label="Image placeholder 01, Human customer experience photograph">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor"/><polygon points="20,10 28.7,15 28.7,25 20,30 11.3,25 11.3,15" fill="none" stroke="currentColor"/></svg>
-            <span class="hx-ph-n">Image 01</span>
-            <span class="hx-ph-t">Human customer experience photograph</span>
-            <span class="hx-ph-r">Desktop 4:5, mobile 4:5</span>
-          </div>
+        <figure class="hx-media hx-photo" data-asset="apertura-cx-human-experience" style="--ar-d:4/5;--ar-m:4/5">
+          <picture class="hx-ph">
+            <source type="image/webp" srcset="img/apertura-cx-human-experience-480.webp 480w, img/apertura-cx-human-experience-692.webp 692w" sizes="(max-width: 720px) calc(100vw - 40px), 460px">
+            <img src="img/apertura-cx-human-experience-692.jpg" srcset="img/apertura-cx-human-experience-480.jpg 480w, img/apertura-cx-human-experience-692.jpg 692w" sizes="(max-width: 720px) calc(100vw - 40px), 460px" width="692" height="865" alt="A customer enjoying a thoughtful interaction in a contemporary hospitality setting." fetchpriority="high" decoding="async">
+          </picture>
         </figure>
           <canvas class="hx-lens-iris" id="heroIris" aria-hidden="true"></canvas>
           <span class="hx-lens-f" id="heroF" aria-hidden="true">f/22</span>
@@ -267,14 +265,14 @@
   <!-- 5. What Apertura examines -->
   <section class="hx-sec field-sand" aria-labelledby="examine-title">
     <div class="wrap hx-split-media">
-      <figure class="hx-media" data-asset="apertura-cx-journey-mapping" style="--ar-d:5/4;--ar-m:4/3">
-          <div class="hx-ph" role="img" aria-label="Image placeholder 03, Customer journey mapping and strategy work">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor"/><polygon points="20,10 28.7,15 28.7,25 20,30 11.3,25 11.3,15" fill="none" stroke="currentColor"/></svg>
-            <span class="hx-ph-n">Image 03</span>
-            <span class="hx-ph-t">Customer journey mapping and strategy work</span>
-            <span class="hx-ph-r">Desktop 5:4, mobile 4:3</span>
-          </div>
-        </figure>
+      <figure class="hx-media hx-photo" data-asset="apertura-cx-journey-mapping" style="--ar-d:5/4;--ar-m:4/3">
+        <picture class="hx-ph">
+          <source media="(max-width: 720px)" type="image/webp" srcset="img/apertura-cx-journey-mapping-mobile-350.webp 350w, img/apertura-cx-journey-mapping-mobile-446.webp 446w" sizes="calc(100vw - 40px)">
+          <source media="(max-width: 720px)" srcset="img/apertura-cx-journey-mapping-mobile-350.jpg 350w, img/apertura-cx-journey-mapping-mobile-446.jpg 446w" sizes="calc(100vw - 40px)">
+          <source type="image/webp" srcset="img/apertura-cx-journey-mapping-desktop-360.webp 360w, img/apertura-cx-journey-mapping-desktop-446.webp 446w" sizes="(max-width: 900px) 92vw, 520px">
+          <img src="img/apertura-cx-journey-mapping-desktop-446.jpg" srcset="img/apertura-cx-journey-mapping-desktop-360.jpg 360w, img/apertura-cx-journey-mapping-desktop-446.jpg 446w" sizes="(max-width: 900px) 92vw, 520px" width="446" height="357" alt="Hands examining a customer journey map with connected touchpoints and observations." loading="lazy" decoding="async">
+        </picture>
+      </figure>
       <div class="hx-copy">
         <h2 id="examine-title" class="hx-h2">What happens between the promise and the experience?</h2>
         <p>Apertura examines the interactions that shape a customer's confidence in your business, from enquiries and bookings to service encounters, communication, delivery and aftercare.</p>
