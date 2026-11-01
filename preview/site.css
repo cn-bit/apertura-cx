@@ -1,3 +1,9 @@
+/* Self-hosted typefaces. Inter Tight and DM Sans, SIL Open Font License 1.1 (see fonts/). */
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:200;font-display:swap;src:url(fonts/inter-tight-latin-200-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:300;font-display:swap;src:url(fonts/inter-tight-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-tight-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
 :root{
   --espresso:#1A1613;
   --espresso-2:#352d29;
@@ -228,7 +234,6 @@ body.menu-open{overflow:hidden}
 .tile-tex .lab{background:#2A2421;align-self:flex-start;padding:6px 10px;font-size:14px}
 .tile-tex .go{background:#2A2421;padding:16px 18px;font-family:var(--display);font-weight:300;font-size:clamp(22px,2vw,28px);line-height:1.15;letter-spacing:-.02em}
 .tile-tex .go span{display:block;font-family:var(--body);font-size:14px;color:#D29A6E;margin-top:10px;letter-spacing:0}
-.tile-tex:hover .go{background:#A05A33}
 .tile-tex:hover .go span{color:#F4EFE7}
 @media (max-width:1000px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.tiles{grid-template-columns:1fr}.tile{min-height:300px}}
@@ -240,15 +245,13 @@ body.menu-open{overflow:hidden}
 .field-ivory{background:#F4EFE7;--espresso:#1A1613;--ink-soft:#5b4f48;--taupe:#A18A78;--bronze:#9A6542;--rule:rgba(42,36,33,.16);color:var(--espresso)}
 .field-sand{background:#E6DCCE;--espresso:#1A1613;--ink-soft:#4f433b;--taupe:#7d6959;--bronze:#86532F;--rule:rgba(42,36,33,.18);color:var(--espresso)}
 .field-espresso{background:#1A1613;--espresso:#F4EFE7;--ink-soft:#D4C9BB;--taupe:#B6A391;--bronze:#D29A6E;--rule:rgba(244,239,231,.2);color:var(--espresso)}
+/* Rust bronze #A05A33 is a digital surface colour, reserved for the approved background fields. Never use it for buttons, icons, borders or type. */
 .field-bronze{background:#A05A33;--espresso:#F4EFE7;--ink-soft:#F7EADF;--taupe:#F2DCCB;--bronze:#F4EFE7;--rule:rgba(244,239,231,.34);color:var(--espresso)}
 .field-bronze .cta:hover{background:#2A2421;color:#F4EFE7}
 .field-espresso .journey h3::before{background:#D29A6E}
 .field-bronze .journey h3::before{background:#F4EFE7}
 
 /* hero variants */
-.v1 .stage{--hero-field:#A05A33;--hero-fg:#F4EFE7;--hero-soft:#F7EADF}
-.v2 .stage{--hero-field:#A05A33;--hero-fg:#F4EFE7;--hero-soft:#D4C9BB}
-.v3 .stage{--hero-field:#F4EFE7;--hero-fg:#2A2421;--hero-soft:#5b4f48;--reveal-ink:#F4EFE7;--pop-bg:#A05A33;--pop-fg:#F4EFE7}
 @media (min-width:901px){.v2 .hero-copy{max-width:min(520px,42vw)}}
 .tile-tex .go{text-decoration:none;color:#F4EFE7}
 .brand polygon{stroke:var(--brand-accent,#B07C57)}
@@ -403,20 +406,20 @@ section.block h3{font-family:var(--display);font-weight:400;font-size:22px;lette
 .field input:disabled{background:#EFE9E0;color:#8b7f76}
 .field .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;line-height:1.45;margin:0;cursor:pointer}
 .field .check.small{margin-top:10px;font-size:14px;align-items:center}
-.field .check input{width:18px;height:18px;margin-top:2px;accent-color:#A05A33;flex:none}
+.field .check input{width:18px;height:18px;margin-top:2px;accent-color:#B07C57;flex:none}
 .field .check a{color:inherit}
 .has-error input,.has-error select,.has-error textarea{border-color:#A3342B}
 .err{color:#A3342B;font-size:14px;margin-top:6px}
 .err:empty{display:none}
 .count{font-size:13px;color:var(--taupe);margin-top:6px;text-align:right}
 .submit{margin-top:6px;justify-self:start;border:0;cursor:pointer;background:#2A2421!important;color:#F4EFE7!important}
-.submit:hover{background:#A05A33!important}
+.submit:hover{background:#B07C57!important;color:#1A1613!important}
 .submit:disabled{opacity:.6;cursor:progress}
 .note-small{font-size:14px;color:var(--taupe);margin-top:-10px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .status:empty{display:none}
 .status{padding:16px 18px;font-size:16px;line-height:1.5;outline:none}
-.status.success{background:#E6DCCE;color:#2A2421;border-left:3px solid #A05A33}
+.status.success{background:#E6DCCE;color:#2A2421;border-left:3px solid #B07C57}
 .status.error{background:#F6E3DF;color:#7A231C;border-left:3px solid #A3342B}
 .ax-form.sent .field,.ax-form.sent .submit,.ax-form.sent .note-small{display:none}
 @media (max-width:900px){.form-layout{grid-template-columns:1fr}}
