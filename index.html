@@ -151,8 +151,7 @@
       <div class="hx-name-iris" data-open=".72"><canvas aria-hidden="true"></canvas></div>
       <div class="hx-name-copy">
         <h2 id="name-title" class="hx-h2-sm">The thinking behind Apertura.</h2>
-        <p>From the Italian <em>apertura</em>, meaning an opening, and the Latin <em>aperire</em>, to open or reveal. In photography, an aperture determines how much light enters the lens.</p>
-        <p>For Apertura CX, the idea is one of clarity, bringing a considered perspective to the customer experience.</p>
+        <p>From the Italian <em>apertura</em>, meaning an opening. For Apertura CX, the idea is one of clarity, bringing a considered perspective to the customer experience.</p>
       </div>
       <details class="hx-defs" id="defs">
         <summary>The full definition</summary>
@@ -201,7 +200,7 @@
         <p>Select a stage to see how it shows up online and in person.</p>
       </div>
       <div class="hx-stages">
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">01</span><h3>Awareness</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">The first impression begins before a conversation takes place.</p>
@@ -211,7 +210,7 @@
               </dl>
             </div>
           </details>
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">02</span><h3>Consideration</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">Interest grows through the questions asked and the answers received.</p>
@@ -221,7 +220,7 @@
               </dl>
             </div>
           </details>
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">03</span><h3>Experience</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">The moment expectations meet reality.</p>
@@ -231,7 +230,7 @@
               </dl>
             </div>
           </details>
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">04</span><h3>Decision</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">The point at which confidence becomes commitment.</p>
@@ -241,7 +240,7 @@
               </dl>
             </div>
           </details>
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">05</span><h3>Delivery</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">The promise made, and how faithfully it is kept.</p>
@@ -251,7 +250,7 @@
               </dl>
             </div>
           </details>
-          <details class="hx-stage">
+          <details class="hx-stage" name="journey">
             <summary><span class="hx-num">06</span><h3>Advocacy</h3><span class="hx-chev" aria-hidden="true"></span></summary>
             <div class="hx-stage-body">
               <p class="hx-interp">What people remember, share and choose to return to.</p>
@@ -486,6 +485,7 @@
       const goal = m.seen ? clamp(m.target + m.boost) : .02;
       m.cur = reduce ? goal : lerp(m.cur, goal, .06);
       const { c, w, h } = m.f, R = Math.min(w, h) / 2 - 2;
+      if (R <= 0) { if (m.cv.clientWidth) m.f = fit(m.cv); return; }
       c.clearRect(0, 0, w, h);
       c.beginPath(); c.arc(w / 2, h / 2, R, 0, TAU); c.fillStyle = m.el.closest('.field-espresso') ? '#2A2421' : '#F4EFE7'; c.fill();
       drawIris(c, { cx: w / 2, cy: h / 2, r: lerp(R * .08, R * 1.05, m.cur), rot: -Math.PI / 2 + m.cur * 1.25, n: 7,
@@ -574,6 +574,13 @@
   }
   requestAnimationFrame(frame);
   addEventListener('resize', size, { once: true });
+})();
+</script>
+<script>
+/* Customer journey stages open one at a time, including in browsers without native exclusive details. */
+(() => {
+  const all = [...document.querySelectorAll('details.hx-stage')];
+  all.forEach(d => d.addEventListener('toggle', () => { if (d.open) all.forEach(o => { if (o !== d && o.open) o.open = false; }); }));
 })();
 </script>
 <script>

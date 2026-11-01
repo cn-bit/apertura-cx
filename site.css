@@ -701,3 +701,29 @@ footer{padding-block:0 40px}
 .hx-intro.hx-in .hx-hero .hx-btn{transition-delay:.75s}
 .hx-intro.hx-in .hx-hero .hx-ph{transition-delay:.7s}
 @media (prefers-reduced-motion:reduce){.hx-lens-iris,.hx-lens-f{display:none}}
+
+/* ---------- Methodology: desktop columns, single-item accordion at 900px and below ---------- */
+.mstage-btn{all:unset;display:block;cursor:default}
+.mstage-btn .num{display:block}
+.mstage-btn .hx-chev{display:none}
+.mstage-name{display:block}
+.method-motif{display:none}
+.mstage-btn:focus-visible{outline:2px solid #B07C57;outline-offset:4px}
+@media (max-width:900px){
+  .method-motif{display:block;margin-top:32px}
+  .method-motif canvas{width:64px;height:64px}
+  .stages{display:block;margin-top:20px;border-top:1px solid var(--rule)}
+  .stages li.mstage{padding:0;border-bottom:1px solid var(--rule)}
+  .stages li.mstage::before{display:none}
+  .stages li.mstage canvas{display:none}
+  .stages h3{margin:0!important;font-size:inherit!important}
+  .mstage-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding-block:10px;cursor:pointer;box-sizing:border-box}
+  .mstage-btn .num{display:inline;min-width:22px;margin:0;font-size:13px;font-weight:500;color:var(--bronze)}
+  .mstage-name{flex:1;font-family:var(--display);font-weight:300;font-size:clamp(22px,5.6vw,26px);letter-spacing:-.02em;color:var(--espresso)}
+  .mstage-btn .hx-chev{display:block}
+  .mstage.is-open .hx-chev::after{transform:translate(-50%,-50%) rotate(0)}
+  .mstage-panel{display:none;padding:0 0 22px 36px}
+  .mstage.is-open .mstage-panel{display:block}
+  .mstage-panel p{margin-top:0!important}
+  .mstage-panel .out{margin-top:14px!important}
+}
