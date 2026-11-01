@@ -478,3 +478,16 @@ footer{padding-block:0 40px}
   .reveal-img{display:flex;justify-content:center;align-items:flex-start}
   .reveal-img img{position:static;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:fill}
 }
+
+/* ---------- Measures tiles on shared rows ---------- */
+.tiles{grid-template-rows:repeat(4,auto);row-gap:0}
+.tile{grid-row:span 4;display:grid;grid-template-rows:subgrid;align-content:start;gap:0;min-height:0;padding-block:clamp(28px,3vw,40px) clamp(32px,3.4vw,48px)}
+.tile > div{display:contents}
+.tile canvas{align-self:start;margin-bottom:clamp(64px,8vw,128px)}
+.tile .stop{align-self:end;margin-bottom:10px}
+.tile h3{align-self:start}
+.tile p{align-self:start;margin-top:14px}
+.tile-tex .lab{grid-row:1;align-self:start}
+.tile-tex .go{grid-row:2 / 5;align-self:start;margin:0}
+@media (max-width:560px){.tile canvas{margin-bottom:40px}}
+.tile-tex .lab{justify-self:start}
