@@ -18,18 +18,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Inter+Tight:wght@200;300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
-<script>
-/* Preview only. ?type=b shows the proposed serif headlines; ?type=a shows the current sans serif. */
-(() => {
-  const q = new URLSearchParams(location.search).get('type');
-  if (q === 'b') {
-    document.documentElement.classList.add('type-b');
-    const l = document.createElement('link'); l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap';
-    document.head.appendChild(l);
-  }
-})();
-</script>
 </head>
 <body class="on-bronze">
 <a class="skip" href="#main">Skip to content</a>
@@ -67,7 +55,7 @@
 <main id="main">
   <section class="page-intro field-bronze">
     <div class="wrap">
-      <h1 data-type-test>Understanding comes before strategy.</h1>
+      <h1>Understanding comes before strategy.</h1>
       <div class="lede">
         <p class="lead-big">Meaningful improvement begins with an accurate understanding of the experience customers receive today.</p>
         <div>
@@ -75,19 +63,21 @@
           <p>The findings provide a foundation for considered decisions, practical recommendations and a clear direction for what follows.</p>
         </div>
       </div>
-      <nav class="onpage" aria-label="On this page">
-        <h2 class="onpage-title">On this page</h2>
-        <ul>
-          <li><a href="#why">Why audit first</a></li>
-          <li><a href="#method">The method</a></li>
-          <li><a href="#journey">The customer journey</a></li>
-          <li><a href="#measures">How we measure</a></li>
-          <li><a href="#conversations">Conversations</a></li>
-          <li><a href="#deliverables">What you receive</a></li>
-          <li><a href="#services">Ways to work together</a></li>
-          <li><a href="#questions">Common questions</a></li>
-        </ul>
-      </nav>
+      <details class="onpage" id="onpage">
+        <summary>Explore this page<span class="onpage-ind" aria-hidden="true"></span></summary>
+        <nav aria-label="Sections on this page">
+          <ul>
+            <li><a href="#why">Why audit first</a></li>
+            <li><a href="#method">The method</a></li>
+            <li><a href="#journey">The customer journey</a></li>
+            <li><a href="#measures">How we measure</a></li>
+            <li><a href="#conversations">Conversations</a></li>
+            <li><a href="#deliverables">What you receive</a></li>
+            <li><a href="#services">Ways to work together</a></li>
+            <li><a href="#questions">Common questions</a></li>
+          </ul>
+        </nav>
+      </details>
     </div>
   </section>
 
@@ -285,7 +275,7 @@
       <ul class="offer">
         <li>
           <div class="o-name"><span class="num">01</span><h3>The Snapshot</h3><span class="timing">Within five business days</span></div>
-          <div class="o-body"><p>A focused assessment of your customer-facing digital channels and one physical location, where applicable. Identifying up to four points where trust, conversion or loyalty may be affected.</p>
+          <div class="o-body"><p>A focused assessment of your customer-facing digital channels and one physical location, where applicable, within the agreed scope. Identifying up to four points where trust, conversion or loyalty may be affected.</p>
 <p>You receive a concise, one-page account of what we observed and what deserves closer examination.</p><p class="inv"><span>Investment</span>$750 + GST</p><details class="svc-more" data-open-above="761"><summary>Scope and terms<span class="hx-chev" aria-hidden="true"></span></summary><p>The Snapshot identifies what deserves closer attention. Detailed solutions and implementation are not included. No payment is taken until the scope and start date are confirmed.</p></details><a class="hx-btn hx-btn-primary svc-cta" href="begin.html">Request a Snapshot</a></div>
         </li>
         <li id="diagnostic">
@@ -321,7 +311,6 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 id="faq-title">Common questions.</h2>
-        <p>Short answers to the questions prospective clients most often ask.</p>
       </div>
       <ul class="faq-list" data-acc="760">
         <li class="mstage faq-item" data-acc-item>
@@ -453,8 +442,5 @@
   requestAnimationFrame(frame);
 })();
 </script>
-<nav class="type-switch" aria-label="Typography comparison"><span>Headlines</span><a href="?type=a">A. Current sans serif</a><a href="?type=b">B. Proposed serif</a></nav>
-<style>.type-switch{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;gap:4px;align-items:center;background:#1A1613;color:#F4EFE7;padding:5px;border-radius:999px;font:500 12.5px "DM Sans",sans-serif;box-shadow:0 0 0 1px rgba(244,239,231,.2)}.type-switch span{padding:0 8px;opacity:.7}.type-switch a{color:#F4EFE7;text-decoration:none;padding:9px 11px;border-radius:999px}.type-switch a[aria-current]{background:#F4EFE7;color:#1A1613}@media (max-width:420px){.type-switch span{display:none}}</style>
-<script>(() => { const b = document.documentElement.classList.contains('type-b'); const a = document.querySelectorAll('.type-switch a'); a[b ? 1 : 0].setAttribute('aria-current', 'true'); })();</script>
 </body>
 </html>

@@ -78,3 +78,10 @@ document.querySelectorAll('details[data-open-above]').forEach(d => {
   set();
   mq.addEventListener ? mq.addEventListener('change', set) : mq.addListener(set);
 });
+
+/* Explore this page: close after a section is chosen */
+(() => {
+  const d = document.getElementById('onpage');
+  if (!d) return;
+  d.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { d.open = false; }));
+})();
