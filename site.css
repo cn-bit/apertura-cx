@@ -673,3 +673,31 @@ footer{padding-block:0 40px}
 .hx-close-iris canvas{width:clamp(120px,14vw,190px);height:clamp(120px,14vw,190px)}
 .hx-report .hx-report-foot{background:none;padding-bottom:0;color:#7d6959;font-size:12.5px}
 @media (max-width:900px) and (min-width:561px){.hx-hero-media{max-width:460px}}
+
+/* ---------- Rust bronze hero and landing lens (Nov 2026) ---------- */
+.home-v2 .hx-hero.field-bronze .hx-lead{color:#F4EFE7}
+.home-v2 .hx-hero.field-bronze .hx-p2{color:#F7EADF}
+.home-v2 .hx-hero.field-bronze .hx-btn-primary{background:#1A1613;color:#F4EFE7}
+.home-v2 .hx-hero.field-bronze .hx-btn-primary:hover{background:#F4EFE7;color:#1A1613}
+.home-v2 .hx-hero.field-bronze .hx-btn-secondary{color:#F4EFE7;border-color:rgba(244,239,231,.8)}
+.home-v2 .hx-hero.field-bronze .hx-btn-secondary:hover{background:#F4EFE7;color:#1A1613;border-color:#F4EFE7}
+.home-v2 .hx-hero .hx-ph{background:#E6DCCE;border-color:rgba(26,22,19,.3)}
+.home-v2 .field-bronze .hx-principles p,.home-v2 .field-bronze .hx-copy p{color:#F7EADF}
+.home-v2 .field-bronze .hx-copy a{color:#F4EFE7}
+
+.hx-lens{position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(40,16,4,.28)}
+.hx-lens-iris{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hx-lens-f{position:absolute;left:16px;top:14px;font-family:var(--display);font-weight:200;font-size:clamp(22px,2.2vw,30px);color:#F4EFE7;letter-spacing:-.01em;font-variant-numeric:tabular-nums;transition:opacity .6s ease;pointer-events:none}
+.hx-open .hx-lens-f{opacity:0}
+
+/* focus pull on landing; content is present and laid out from the first frame */
+.hx-intro .hx-hero .hx-h1,.hx-intro .hx-hero .hx-p1,.hx-intro .hx-hero .hx-p2,.hx-intro .hx-hero .hx-btn,.hx-intro .hx-hero .hx-ph{
+  filter:blur(10px);opacity:.25;transform:translateY(8px);
+  transition:filter 1.1s cubic-bezier(.2,.7,.2,1),opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.hx-intro .hx-hero .hx-ph{transform:scale(1.06);filter:blur(16px);opacity:1;transition-duration:2.4s}
+.hx-intro.hx-in .hx-hero .hx-h1,.hx-intro.hx-in .hx-hero .hx-p1,.hx-intro.hx-in .hx-hero .hx-p2,.hx-intro.hx-in .hx-hero .hx-btn,.hx-intro.hx-in .hx-hero .hx-ph{filter:none;opacity:1;transform:none}
+.hx-intro.hx-in .hx-hero .hx-p1{transition-delay:.15s}
+.hx-intro.hx-in .hx-hero .hx-p2{transition-delay:.3s}
+.hx-intro.hx-in .hx-hero .hx-btn{transition-delay:.4s}
+.hx-intro.hx-in .hx-hero .hx-ph{transition-delay:.45s}
+@media (prefers-reduced-motion:reduce){.hx-lens-iris,.hx-lens-f{display:none}}

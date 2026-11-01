@@ -13,7 +13,7 @@
 <meta property="og:description" content="Apertura CX is a Melbourne customer experience consultancy specialising in customer journey mapping, CX audits and practical strategies to improve trust, conversion and loyalty.">
 <meta property="og:url" content="https://cn-bit.github.io/apertura-cx/">
 <meta property="og:locale" content="en_AU">
-<meta name="theme-color" content="#F4EFE7">
+<meta name="theme-color" content="#A05A33">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231A1613'/%3E%3Cpolygon points='16,9 22,12.5 22,19.5 16,23 10,19.5 10,12.5' fill='%23F4EFE7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,8 +80,12 @@
  ]
 }
 </script>
+<script>
+  /* Only play the landing sequence when motion is welcome; without script the page simply shows in focus. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('hx-intro');
+</script>
 </head>
-<body class="home-v2">
+<body class="home-v2 on-bronze">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-head on-light" id="head">
@@ -117,12 +121,13 @@
 <main id="main">
 
   <!-- 1. Hero -->
-  <section class="hx-hero field-ivory" aria-labelledby="hero-title">
+  <section class="hx-hero field-bronze" aria-labelledby="hero-title">
     <div class="wrap hx-hero-grid">
       <h1 id="hero-title" class="hx-h1">Better customer experiences begin with understanding.</h1>
       <p class="hx-lead hx-p1">Apertura CX is a Melbourne customer experience consultancy specialising in customer journey mapping, experience audits and commercial strategy for founder-led businesses.</p>
       <a class="hx-btn hx-btn-primary hx-cta1" href="approach.html">Explore our approach</a>
       <div class="hx-hero-media">
+        <div class="hx-lens">
         <figure class="hx-media" data-asset="apertura-cx-human-experience" style="--ar-d:4/5;--ar-m:4/5">
           <div class="hx-ph" role="img" aria-label="Image placeholder 01, Human customer experience photograph">
             <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor"/><polygon points="20,10 28.7,15 28.7,25 20,30 11.3,25 11.3,15" fill="none" stroke="currentColor"/></svg>
@@ -131,6 +136,9 @@
             <span class="hx-ph-r">Desktop 4:5, mobile 4:5</span>
           </div>
         </figure>
+          <canvas class="hx-lens-iris" id="heroIris" aria-hidden="true"></canvas>
+          <span class="hx-lens-f" id="heroF" aria-hidden="true">f/22</span>
+        </div>
       </div>
       <p class="hx-p2">We examine how customers discover, engage with and return to your business, identifying friction and developing practical recommendations that strengthen trust, conversion and loyalty.</p>
       <a class="hx-btn hx-btn-secondary hx-cta2" href="begin.html">Request a Snapshot</a>
@@ -362,7 +370,7 @@
   </section>
 
   <!-- 9. Who Apertura works with -->
-  <section class="hx-sec field-ivory" aria-labelledby="who-title">
+  <section class="hx-sec field-bronze" aria-labelledby="who-title">
     <div class="wrap">
       <div class="hx-split-text">
         <h2 id="who-title" class="hx-h2">Made for brands still shaped by the people who founded them.</h2>
@@ -487,6 +495,85 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+/* Landing sequence. The blades over the hero image open while the headline and image pull into focus. */
+(() => {
+  const root = document.documentElement;
+  const cv = document.getElementById('heroIris');
+  const fLabel = document.getElementById('heroF');
+  if (!root.classList.contains('hx-intro') || !cv) { cv && cv.remove(); fLabel && fLabel.remove(); return; }
+  const TAU = Math.PI * 2, clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const STOPS = ['22', '16', '11', '8', '5.6', '4', '2.8', '2', '1.4'];
+  function drawIris(ctx, o) {
+    const n = o.n, v = [];
+    for (let i = 0; i < n; i++) {
+      const a = o.rot + i * TAU / n;
+      v.push([o.cx + o.r * Math.cos(a), o.cy + o.r * Math.sin(a)]);
+    }
+    const e = v.map((p, i) => {
+      const q = v[(i + 1) % n], dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1;
+      return [dx / l, dy / l];
+    });
+    ctx.save();
+    ctx.beginPath(); ctx.arc(o.cx, o.cy, o.house, 0, TAU); ctx.clip();
+    for (let i = 0; i < n; i++) {
+      const a = v[i], b = v[(i + 1) % n], ep = e[(i - 1 + n) % n], ei = e[i], L = o.L;
+      ctx.beginPath();
+      ctx.moveTo(a[0] + ep[0] * L, a[1] + ep[1] * L);
+      ctx.lineTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+      ctx.lineTo(b[0] + ei[0] * L, b[1] + ei[1] * L);
+      ctx.closePath();
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+      let nx = mx - o.cx, ny = my - o.cy; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
+      const g = ctx.createLinearGradient(mx, my, mx + nx * o.depth, my + ny * o.depth);
+      g.addColorStop(0, i % 2 ? o.lightA : o.lightB);
+      g.addColorStop(1, o.base);
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(b[0], b[1]); ctx.lineTo(b[0] + ei[0] * L, b[1] + ei[1] * L);
+      ctx.strokeStyle = o.seam; ctx.lineWidth = o.lw; ctx.stroke();
+    }
+    ctx.beginPath(); v.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.closePath();
+    ctx.strokeStyle = o.edge; ctx.lineWidth = o.lw; ctx.stroke();
+    ctx.restore();
+    if (o.ring > 0) {
+      ctx.beginPath(); ctx.arc(o.cx, o.cy, o.house, 0, TAU);
+      ctx.strokeStyle = `rgba(176,124,87,${o.ring})`; ctx.lineWidth = o.lw; ctx.stroke();
+    }
+  }
+
+
+  const d = Math.min(devicePixelRatio || 1, 2);
+  let w = 0, h = 0, c;
+  function size() {
+    w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = Math.round(w * d); cv.height = Math.round(h * d);
+    c = cv.getContext('2d'); c.setTransform(d, 0, 0, d, 0, 0);
+  }
+  size();
+  requestAnimationFrame(() => root.classList.add('hx-in'));
+  const DELAY = 350, DUR = 1900;
+  let start = null, shown = -1;
+  function frame(now) {
+    if (start === null) start = now;
+    const t = clamp((now - start - DELAY) / DUR), e = ease(t);
+    const diag = Math.hypot(w, h) / 2, m = Math.min(w, h);
+    const r = lerp(m * .035, diag * 1.08, e);
+    c.clearRect(0, 0, w, h);
+    drawIris(c, {
+      cx: w / 2, cy: h / 2, r, rot: -Math.PI / 2 + e * 1.3, n: 9, house: diag * 1.4, L: diag * 4, depth: diag,
+      base: '#1A1613', lightA: '#3a302b', lightB: '#332a25',
+      seam: 'rgba(161,138,120,.35)', edge: 'rgba(214,170,130,.75)', lw: 1, ring: 0
+    });
+    const i = Math.round(e * (STOPS.length - 1));
+    if (i !== shown) { fLabel.textContent = 'f/' + STOPS[i]; shown = i; }
+    if (t < 1) requestAnimationFrame(frame);
+    else { root.classList.add('hx-open'); setTimeout(() => { cv.remove(); fLabel.remove(); }, 700); }
+  }
+  requestAnimationFrame(frame);
+  addEventListener('resize', size, { once: true });
 })();
 </script>
 <script>
