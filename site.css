@@ -4,6 +4,9 @@
 @font-face{font-family:"Inter Tight";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-tight-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
+/* Metric-matched fallbacks so text does not move when the brand fonts arrive */
+@font-face{font-family:"Inter Tight Fallback";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:98.8%;ascent-override:98.1%;descent-override:24.4%;line-gap-override:0%}
+@font-face{font-family:"DM Sans Fallback";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:105.2%;ascent-override:94.3%;descent-override:29.5%;line-gap-override:0%}
 :root{
   --espresso:#1A1613;
   --espresso-2:#352d29;
@@ -13,8 +16,8 @@
   --bronze:#B07C57;
   --ink-soft:#5b4f48;
   --rule:rgba(42,36,33,.16);
-  --display:"Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --body:"DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --display:"Inter Tight", "Inter Tight Fallback", "Helvetica Neue", Arial, sans-serif;
+  --body:"DM Sans", "DM Sans Fallback", "Helvetica Neue", Arial, sans-serif;
   --gutter:clamp(20px, 5vw, 72px);
   --max:1240px;
 }
@@ -835,3 +838,23 @@ html{scroll-padding-top:88px}
 .hx-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hx-photo[data-asset="apertura-cx-human-experience"] img{object-position:50% 35%}
 .hx-photo[data-asset="apertura-cx-journey-mapping"] img{object-position:50% 50%}
+
+/* ---------- Photography, Approach and About ---------- */
+.pic{margin:0}
+.pic picture{display:block;aspect-ratio:var(--ar-d);overflow:hidden;border-radius:2px;background:#E6DCCE}
+.pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+@media (max-width:720px){.pic picture{aspect-ratio:var(--ar-m)}}
+@media (max-width:860px){.pic-retail picture{aspect-ratio:var(--ar-m)}}
+.sec-head.with-photo{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:center}
+.sec-head.with-photo .sh-text p{margin-top:24px}
+.sec-head.with-photo .sh-text p+p{margin-top:14px}
+.pic-retail{justify-self:end;width:100%;max-width:440px}
+.sec-head.pic-first{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
+.sec-head.pic-first .pic{order:-1}
+@media (max-width:860px){
+  .sec-head.with-photo,.sec-head.pic-first{grid-template-columns:minmax(0,1fr);gap:28px}
+  .sec-head.pic-first .pic{order:0}
+  .pic-retail{justify-self:stretch;max-width:none}
+}
+.interlude{padding-block:clamp(48px,7vw,104px)}
+.pic-architecture{width:100%;max-width:960px;margin-inline:auto}
