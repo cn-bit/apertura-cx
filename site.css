@@ -942,3 +942,18 @@ html{scroll-padding-top:88px}
 @media (max-width:860px){.form-layout{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.br-d{display:none}}
 .hx-services-two .hx-service:not(.hx-service-lead) .hx-receive span{color:#6B4529}
+
+/* ---------- Serif heading comparison (preview only until a typeface is approved) ---------- */
+@font-face{font-family:"Instrument Serif";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/instrument-serif-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Instrument Serif";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/instrument-serif-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:italic;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:300;font-style:normal;font-display:swap;src:url(fonts/fraunces-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-weight:300;font-style:italic;font-display:swap;src:url(fonts/fraunces-latin-300-italic.woff2) format("woff2")}
+:root{--serif:none}
+.type-s1{--serif:"Instrument Serif",Georgia,"Times New Roman",serif;--s-w:400;--s-ls:-.012em;--s-adj:.58;--s-lh:1.02}
+.type-s2{--serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--s-w:500;--s-ls:-.012em;--s-adj:.41;--s-lh:1.02}
+.type-s3{--serif:"Fraunces",Georgia,"Times New Roman",serif;--s-w:300;--s-ls:-.025em;--s-adj:.44;--s-lh:1.04}
+:is(.type-s1,.type-s2,.type-s3) :is(.hx-h1,.hx-h2,.page-intro h1,.sec-head h2,.sec-title,.invite h2,.fee-big,.tags3 h3,.hx-measures h3,.offer h3,.hx-service h3,.people-grid h3){font-family:var(--serif)!important;font-weight:var(--s-w)!important;letter-spacing:var(--s-ls)!important;line-height:var(--s-lh)!important;font-size-adjust:var(--s-adj)}
+:is(.type-s1,.type-s2,.type-s3) .breakout{font-family:var(--serif)!important;font-style:italic;font-weight:var(--s-w)!important;letter-spacing:0;font-size-adjust:var(--s-adj)}
