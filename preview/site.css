@@ -951,3 +951,10 @@ html{scroll-padding-top:88px}
 :is(.hx-h1,.hx-h2,.page-intro h1,.sec-head h2,.sec-title,.invite h2,.fee-big,.tags3 h3,.hx-measures h3,.offer h3,.hx-service h3,.people-grid h3){font-family:var(--serif)!important;font-weight:300!important;letter-spacing:-.025em!important;line-height:1.04!important;font-size-adjust:.44}
 .breakout{font-family:var(--serif)!important;font-style:italic;font-weight:300!important;letter-spacing:0;font-size-adjust:.44}
 .hx-services-two .hx-service:not(.hx-service-lead) .hx-price-quiet{color:#6B4529}
+/* Journey stage labels on phones, two rows of three with aligned numbers */
+@media (max-width:720px){
+  .hx-stage-labels{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;column-gap:10px;row-gap:12px;font-size:clamp(12.5px,3.7vw,15px);width:100%}
+  .hx-stage-labels li{display:flex;align-items:baseline;white-space:nowrap}
+  .hx-stage-labels span{width:1.9em;flex:none;margin-right:0}
+}
+@media (max-width:340px){.hx-stage-labels{column-gap:4px;font-size:12.5px}.hx-stage-labels span{width:1.6em}}
