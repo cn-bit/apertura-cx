@@ -858,3 +858,87 @@ html{scroll-padding-top:88px}
 }
 .interlude{padding-block:clamp(48px,7vw,104px)}
 .pic-architecture{width:100%;max-width:960px;margin-inline:auto}
+
+/* ---------- November 2026 editorial revision ---------- */
+.breakout{font-family:var(--display);font-weight:300;font-size:clamp(20px,1.9vw,26px);line-height:1.3;letter-spacing:-.015em;color:var(--espresso)!important;max-width:520px;margin-top:clamp(24px,2.6vw,36px)!important;padding-top:14px;border-top:1px solid var(--bronze);text-wrap:balance}
+.field-bronze .breakout,.field-espresso .breakout{border-top-color:currentColor}
+.page-intro .breakout{margin-top:22px!important}
+.breakout-wide{max-width:none}
+.hx-h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:-.01em;line-height:1.2;margin-bottom:12px}
+.hx-copy .hx-h3+p{margin-top:0}
+.hx-copy .breakout{color:var(--espresso)!important}
+.hx-h2-solo{max-width:760px}
+/* Home opportunity, copy left and image right */
+.hx-split-copy-first .pic{order:2}
+.pic-retail-home{width:100%;max-width:560px;justify-self:end}
+@media (max-width:860px){.pic-retail-home{justify-self:stretch;max-width:none}}
+/* Home journey stage labels */
+.hx-stage-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin-top:clamp(24px,3vw,40px);border-top:1px solid var(--rule);padding-top:18px}
+.hx-stage-labels{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--espresso)}
+.hx-stage-labels span{color:#6B4529;font-size:12px;font-weight:500;margin-right:6px;font-variant-numeric:tabular-nums}
+.text-cta{display:inline-flex;align-items:center;min-height:44px;font-weight:500;font-size:15px;color:var(--espresso);text-underline-offset:4px}
+.text-cta::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-top:1.5px solid currentColor;transform:rotate(45deg);margin-left:10px}
+/* Home two engagement cards, the comprehensive engagement leads */
+.hx-services-two{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.hx-service-lead{padding:clamp(28px,3.4vw,48px)}
+.hx-service-lead h3{font-size:clamp(28px,2.8vw,40px)}
+.hx-services-two .hx-service:not(.hx-service-lead){background:transparent;border:1px solid rgba(26,22,19,.16);border-top:2px solid #1A1613}
+.hx-support{margin-top:clamp(24px,3vw,36px);color:var(--ink-soft);max-width:620px;font-size:16px}
+@media (max-width:860px){.hx-services-two{grid-template-columns:minmax(0,1fr)}}
+/* Approach */
+.why-grid.areas{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
+.why-grid.areas p{font-size:16px}
+@media (max-width:1000px){.why-grid.areas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.why-grid.areas{grid-template-columns:minmax(0,1fr)}}
+.pic-property,.pic-journey{width:100%}
+.pic-journey{justify-self:end;max-width:560px}
+@media (max-width:860px){.pic-journey{justify-self:stretch;max-width:none}}
+.small-note{margin-top:clamp(28px,3vw,40px);color:var(--ink-soft);font-size:15px;max-width:620px}
+.small-note p+p{margin-top:6px}
+.offer-two .o-deliv{margin-top:14px!important;color:var(--espresso)!important}
+.offer-two .o-deliv span{display:block;font-size:13px;font-weight:500;color:#6B4529;margin-bottom:2px}
+.offer-two .svc-cta{margin-top:20px}
+.offer-lead h3{font-size:clamp(28px,2.8vw,40px)!important}
+.offer-quiet h3{font-size:clamp(20px,1.8vw,24px)!important}
+.offer-quiet{opacity:1}
+/* About */
+.sec-head.with-photo h3.sub{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:-.01em;margin-top:32px}
+.sec-head.with-photo h3.sub+p{margin-top:10px}
+.pic-architecture{width:100%;max-width:460px;justify-self:end}
+@media (max-width:860px){.pic-architecture{justify-self:stretch;max-width:none}.pic-architecture picture{aspect-ratio:var(--ar-m)}}
+.name-block{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,6vw,96px);margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--rule);padding-top:24px}
+.name-block h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:-.01em}
+.name-block p{color:var(--ink-soft);font-size:16px;max-width:520px}
+.name-block p+p{margin-top:10px}
+@media (max-width:860px){.name-block{grid-template-columns:minmax(0,1fr);gap:12px}}
+.defs-more{margin-top:18px;border-top:1px solid var(--rule)}
+.defs-more summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;cursor:pointer;font-weight:500;font-size:15px;color:var(--espresso)}
+.defs-more summary::-webkit-details-marker{display:none}
+.defs-more[open] .hx-chev::after{transform:translate(-50%,-50%) rotate(0)}
+.defs-more dl{display:grid;gap:14px;padding:4px 0 8px}
+.defs-more dl div{border-top:1px solid var(--rule);padding-top:12px}
+.defs-more dt{font-size:13px;font-weight:500;color:#8A5A3B;letter-spacing:.02em}
+.defs-more dt span{color:#7A6656;font-weight:400;margin-left:6px}
+.defs-more dd{color:var(--ink-soft);font-size:15px;margin-top:4px}
+.people-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);margin-top:clamp(36px,5vw,56px)}
+.people-grid h3{font-family:var(--display);font-weight:300;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.025em;line-height:1.1}
+.people-grid p{color:var(--ink-soft);margin-top:14px;max-width:520px}
+.people{list-style:none;margin-top:20px;border-top:1px solid var(--rule)}
+.people li{display:grid;grid-template-columns:minmax(0,10fr) minmax(0,14fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.people b{font-weight:500}
+.people span{color:var(--ink-soft)}
+@media (max-width:860px){.people-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.people li{grid-template-columns:minmax(0,1fr);gap:2px}}
+/* Snapshot */
+.snap-included{margin-top:clamp(32px,4vw,56px)}
+.snap-included h3{font-size:clamp(22px,2vw,28px)!important}
+.fee-big{font-family:var(--display);font-weight:300;font-size:clamp(48px,6vw,88px);line-height:1;letter-spacing:-.04em}
+.fee-sub{margin-top:10px;color:var(--ink-soft)}
+.snap-invest p{color:var(--ink-soft);max-width:560px}
+.snap-invest .fee-sub+p{margin-top:6px}
+.snap-invest{padding-block:clamp(64px,8vw,120px)}
+.form-intro p{color:var(--ink-soft);margin-top:14px;max-width:440px}
+.form-intro .sec-title+p{margin-top:20px}
+@media (max-width:860px){.form-layout{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.br-d{display:none}}
+.hx-services-two .hx-service:not(.hx-service-lead) .hx-receive span{color:#6B4529}
